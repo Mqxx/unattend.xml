@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="windowsPE">
+        <!-- Settings for the WinPE phase -->
+    </settings>
+    <settings pass="offlineServicing">
+        <!-- Settings for offline image servicing -->
+    </settings>
+    <settings pass="generalize">
+        <!-- Settings for the generalize phase -->
+    </settings>
+    <settings pass="specialize">
+        <!-- Settings for the specialize phase -->
+    </settings>
+    <settings pass="auditSystem">
+        <!-- Settings for the audit system phase -->
+    </settings>
+    <settings pass="auditUser">
+        <!-- Settings for the audit user phase -->
+    </settings>
+    <settings pass="oobeSystem">
+        <!-- Settings for the OOBE phase -->
+    </settings>
+</unattend>
