@@ -1,0 +1,192 @@
+<component
+  name="Microsoft-Windows-Shell-Setup"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures system-specific settings such as computer name, time zone, and product key -->
+  <!-- Configures shell and user interface settings during the oobeSystem phase -->
+  <AutoLogon>
+    <!-- Configures automatic logon for a user account (oobeSystem, auditSystem) -->
+    <Password>
+      <!-- Specifies the password for the auto logon account -->
+      <Value>EncryptedPassword</Value>
+      <!-- Specifies the encrypted password value -->
+      <PlainText>false</PlainText>
+      <!-- Specifies whether the password is in plain text -->
+    </Password>
+    <Username>Administrator</Username>
+    <!-- Specifies the username for auto logon -->
+    <LogonCount>5</LogonCount>
+    <!-- Specifies the number of times auto logon is used -->
+    <Enabled>true</Enabled>
+    <!-- Enables or disables auto logon -->
+  </AutoLogon>
+  <FirstLogonCommands>
+    <!-- Configures commands to run at first user logon (oobeSystem, auditUser) -->
+    <SynchronousCommand wcm:action="add">
+      <!-- Defines a command to execute -->
+      <CommandLine>cmd.exe /c echo Hello > C:\test.txt</CommandLine>
+      <!-- Specifies the command to execute -->
+      <Description>Creates a test file</Description>
+      <!-- Specifies the description of the command -->
+      <Order>1</Order>
+      <!-- Specifies the execution order of the command -->
+      <RequiresUserInput>false</RequiresUserInput>
+      <!-- Specifies whether the command requires user input -->
+    </SynchronousCommand>
+  </FirstLogonCommands>
+  <OOBE>
+    <!-- Configures Out-Of-Box Experience settings (oobeSystem) -->
+    <HideEULAPage>true</HideEULAPage>
+    <!-- Hides the End User License Agreement page -->
+    <HideLocalAccountScreen>true</HideLocalAccountScreen>
+    <!-- Hides the local account creation screen -->
+    <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+    <!-- Hides the OEM registration screen -->
+    <HideOnlineAccountScreen>true</HideOnlineAccountScreen>
+    <!-- Hides the online account setup screen -->
+    <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+    <!-- Hides the wireless setup page in OOBE -->
+    <NetworkLocation>Work</NetworkLocation>
+    <!-- Specifies the network location (Home, Work, Other) -->
+    <ProtectYourPC>1</ProtectYourPC>
+    <!-- Specifies the level of automatic updates and protection (1=Recommended, 2=Updates only, 3=Disabled) -->
+    <SkipMachineOOBE>true</SkipMachineOOBE>
+    <!-- Skips the machine OOBE setup -->
+    <SkipUserOOBE>true</SkipUserOOBE>
+    <!-- Skips the user OOBE setup -->
+  </OOBE>
+  <UserAccounts>
+    <!-- Configures user accounts (oobeSystem, auditSystem) -->
+    <AdministratorPassword>
+      <!-- Specifies the password for the Administrator account -->
+      <Value>EncryptedPassword</Value>
+      <!-- Specifies the encrypted password value -->
+      <PlainText>false</PlainText>
+      <!-- Specifies whether the password is in plain text -->
+    </AdministratorPassword>
+    <LocalAccounts>
+      <!-- Configures local user accounts -->
+      <LocalAccount wcm:action="add">
+        <!-- Defines a local user account -->
+        <Password>
+          <!-- Specifies the password for the local account -->
+          <Value>EncryptedPassword</Value>
+          <!-- Specifies the encrypted password value -->
+          <PlainText>false</PlainText>
+          <!-- Specifies whether the password is in plain text -->
+        </Password>
+        <Description>Local user account</Description>
+        <!-- Specifies the description of the account -->
+        <DisplayName>User1</DisplayName>
+        <!-- Specifies the display name of the account -->
+        <Group>Administrators</Group>
+        <!-- Specifies the group membership for the account -->
+        <Name>User1</Name>
+        <!-- Specifies the username of the account -->
+      </LocalAccount>
+    </LocalAccounts>
+  </UserAccounts>
+  <RegisteredOrganization>Example Corp</RegisteredOrganization>
+  <!-- Specifies the registered organization name (specialize, oobeSystem) -->
+  <RegisteredOwner>John Doe</RegisteredOwner>
+  <!-- Specifies the registered owner name (specialize, oobeSystem) -->
+  <TimeZone>Central European Standard Time</TimeZone>
+  <!-- Specifies the time zone (specialize, oobeSystem) -->
+  <ComputerName>PC-01</ComputerName>
+  <!-- Specifies the computer name (specialize, oobeSystem) -->
+  <CopyProfile>true</CopyProfile>
+  <!-- Specifies whether to copy the Administrator profile to the default user profile (specialize) -->
+  <ShowWindowsLive>false</ShowWindowsLive>
+  <!-- Specifies whether to show Windows Live setup (oobeSystem, deprecated) -->
+  <BluetoothTaskbarIconEnabled>false</BluetoothTaskbarIconEnabled>
+  <!-- Enables or disables the Bluetooth taskbar icon (specialize, oobeSystem) -->
+  <DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
+  <!-- Disables automatic daylight saving time adjustment (specialize, oobeSystem) -->
+  <Themes>
+    <!-- Configures desktop theme settings (oobeSystem) -->
+    <ThemeName>aero</ThemeName>
+    <!-- Specifies the name of the theme to apply -->
+    <DesktopBackground>%WINDIR%\Web\Wallpaper\Windows\img0.jpg</DesktopBackground>
+    <!-- Specifies the path to the desktop background image -->
+  </Themes>
+  <VisualEffects>
+    <!-- Configures visual effect settings (oobeSystem) -->
+    <FontSmoothing>ClearType</FontSmoothing>
+    <!-- Specifies the font smoothing type (None, Standard, ClearType) -->
+  </VisualEffects>
+  <WindowsFeatures>
+    <!-- Configures Windows feature visibility (oobeSystem) -->
+    <ShowWindowsMediaPlayer>true</ShowWindowsMediaPlayer>
+    <!-- Specifies whether to show Windows Media Player -->
+    <ShowInternetExplorer>true</ShowInternetExplorer>
+    <!-- Specifies whether to show Internet Explorer -->
+    <ShowMediaCenter>false</ShowMediaCenter>
+    <!-- Specifies whether to show Windows Media Center (deprecated) -->
+  </WindowsFeatures>
+  <LogonCommands>
+    <!-- Configures commands to run at logon (specialize, auditSystem) -->
+    <AsynchronousCommand wcm:action="add">
+      <!-- Defines an asynchronous command to execute -->
+      <CommandLine>cmd.exe /c echo Logon > C:\logon.txt</CommandLine>
+      <!-- Specifies the command to execute -->
+      <Description>Creates a logon file</Description>
+      <!-- Specifies the description of the command -->
+      <Order>1</Order>
+      <!-- Specifies the execution order of the command -->
+    </AsynchronousCommand>
+  </LogonCommands>
+  <Display>
+    <!-- Configures display settings (specialize, windowsPE) -->
+    <ColorDepth>32</ColorDepth>
+    <!-- Specifies the color depth in bits -->
+    <HorizontalResolution>1920</HorizontalResolution>
+    <!-- Specifies the horizontal resolution in pixels -->
+    <VerticalResolution>1080</VerticalResolution>
+    <!-- Specifies the vertical resolution in pixels -->
+    <RefreshRate>60</RefreshRate>
+    <!-- Specifies the refresh rate in Hertz -->
+  </Display>
+  <StartPanelLinks>
+    <!-- Configures Start menu pinned links (oobeSystem) -->
+    <Link wcm:action="add">
+      <!-- Defines a Start menu link -->
+      <LinkPath>%ProgramFiles%\Internet Explorer\iexplore.exe</LinkPath>
+      <!-- Specifies the path to the application to pin -->
+    </Link>
+  </StartPanelLinks>
+  <TaskbarLinks>
+    <!-- Configures taskbar pinned links (oobeSystem) -->
+    <Link wcm:action="add">
+      <!-- Defines a taskbar link -->
+      <LinkPath>%ProgramFiles%\Internet Explorer\iexplore.exe</LinkPath>
+      <!-- Specifies the path to the application to pin -->
+    </Link>
+  </TaskbarLinks>
+  <FolderLocations>
+    <!-- Configures default folder locations (oobeSystem) -->
+    <ProfilesDirectory>%SystemDrive%\Users</ProfilesDirectory>
+    <!-- Specifies the directory for user profiles -->
+    <ProgramData>%SystemDrive%\ProgramData</ProgramData>
+    <!-- Specifies the directory for program data -->
+  </FolderLocations>
+  <OEMInformation>
+    <!-- Configures OEM information (specialize, oobeSystem) -->
+    <Manufacturer>Contoso</Manufacturer>
+    <!-- Specifies the OEM manufacturer name -->
+    <Model>Model XYZ</Model>
+    <!-- Specifies the OEM model name -->
+    <SupportHours>9 AM - 5 PM</SupportHours>
+    <!-- Specifies the OEM support hours -->
+    <SupportPhone>1-800-555-1234</SupportPhone>
+    <!-- Specifies the OEM support phone number -->
+    <SupportURL>https://www.contoso.com/support</SupportURL>
+    <!-- Specifies the OEM support URL -->
+    <Logo>%ProgramFiles%\Contoso\logo.bmp</Logo>
+    <!-- Specifies the path to the OEM logo -->
+  </OEMInformation>
+</component>

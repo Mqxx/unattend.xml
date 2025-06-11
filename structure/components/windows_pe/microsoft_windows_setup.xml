@@ -1,0 +1,103 @@
+<component
+  name="Microsoft-Windows-Setup"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures core setup options such as disk partitioning, image selection, license agreement, and user data -->
+  <!-- Configures core setup options during the WinPE phase -->
+  <DiskConfiguration>
+    <!-- Specifies disk configuration settings, such as partitioning -->
+    <WillShowUI>OnError</WillShowUI>
+    <Disk wcm:action="add">
+      <!-- Defines the disk to configure -->
+      <DiskID>0</DiskID>
+      <!-- Specifies whether to wipe the disk before partitioning -->
+      <WillWipeDisk>true</WillWipeDisk>
+      <CreatePartitions>
+        <!-- Defines partitions to create on the disk -->
+        <CreatePartition wcm:action="add">
+          <!-- Specifies the order of the partition -->
+          <Order>1</Order>
+          <!-- Specifies the size of the partition in MB -->
+          <Size>100</Size>
+          <!-- Specifies the type of partition (e.g., EFI, Primary) -->
+          <Type>EFI</Type>
+        </CreatePartition>
+      </CreatePartitions>
+      <ModifyPartitions>
+        <!-- Defines modifications to existing partitions -->
+        <ModifyPartition wcm:action="add">
+          <!-- Specifies the order of the partition to modify -->
+          <Order>1</Order>
+          <!-- Specifies the partition ID -->
+          <PartitionID>1</PartitionID>
+          <!-- Specifies the file system format (e.g., FAT32, NTFS) -->
+          <Format>FAT32</Format>
+          <!-- Specifies the partition label -->
+          <Label>System</Label>
+        </ModifyPartition>
+      </ModifyPartitions>
+    </Disk>
+  </DiskConfiguration>
+  <ImageInstall>
+    <!-- Specifies the Windows image to install -->
+    <OSImage>
+      <!-- Defines settings for the operating system image -->
+      <InstallTo>
+        <!-- Specifies the disk and partition to install the OS -->
+        <DiskID>0</DiskID>
+        <PartitionID>2</PartitionID>
+      </InstallTo>
+      <InstallFrom>
+        <!-- Specifies the source of the Windows image -->
+        <Path>\sources\install.wim</Path>
+        <MetaData wcm:action="add">
+          <!-- Specifies metadata to select the image (e.g., edition) -->
+          <Key>/IMAGE/INDEX</Key>
+          <Value>1</Value>
+        </MetaData>
+      </InstallFrom>
+      <!-- Controls whether the image selection UI is shown -->
+      <WillShowUI>Never</WillShowUI>
+    </OSImage>
+  </ImageInstall>
+  <UserData>
+    <!-- Specifies user and licensing information -->
+    <AcceptEula>true</AcceptEula>
+    <!-- Specifies the organization name -->
+    <Organization>Example Corp</Organization>
+    <!-- Specifies the full name of the user -->
+    <FullName>User Name</FullName>
+    <ProductKey>
+      <!-- Specifies the product key for Windows activation -->
+      <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+      <!-- Specifies whether to display the product key UI -->
+      <WillShowUI>Never</WillShowUI>
+    </ProductKey>
+  </UserData>
+  <ComplianceCheck>
+    <!-- Configures compliance checks during setup -->
+    <DisplayReport>OnError</DisplayReport>
+  </ComplianceCheck>
+  <Diagnostics>
+    <!-- Configures diagnostic settings for setup -->
+    <OptIn>false</OptIn>
+  </Diagnostics>
+  <DynamicUpdate>
+    <!-- Configures dynamic update settings for setup -->
+    <Enable>true</Enable>
+    <WillShowUI>Never</WillShowUI>
+  </DynamicUpdate>
+  <EnableFirewall>true</EnableFirewall>
+  <!-- Enables or disables the firewall during WinPE -->
+  <EnableNetwork>true</EnableNetwork>
+  <!-- Enables or disables network connectivity during WinPE -->
+  <LogPath>C:\Logs</LogPath>
+  <!-- Specifies the path for setup logs -->
+  <Restart>Restart</Restart>
+  <!-- Specifies whether to restart after setup -->
+</component>

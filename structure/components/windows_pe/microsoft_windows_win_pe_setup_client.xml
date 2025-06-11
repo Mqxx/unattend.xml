@@ -1,0 +1,34 @@
+<component
+  name="Microsoft-Windows-WinPE-Setup-Client"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures client-specific setup options in WinPE, e.g., for OEM or enterprise installations -->
+  <!-- Configures the behavior and appearance of the Windows Setup client in WinPE -->
+  <Branding>
+    <!-- Specifies branding information for the Setup client -->
+    <BrandName>Custom Brand</BrandName>
+    <!-- Specifies the brand name displayed in the Setup UI -->
+    <SupportPhone>1-800-555-1234</SupportPhone>
+    <!-- Specifies the support phone number displayed in the Setup UI -->
+    <SupportURL>https://www.example.com/support</SupportURL>
+    <!-- Specifies the support URL displayed in the Setup UI -->
+    <SupportHours>9 AM - 5 PM</SupportHours>
+    <!-- Specifies the support hours displayed in the Setup UI -->
+  </Branding>
+  <Display>
+    <!-- Configures display settings for the Setup client UI -->
+    <ColorDepth>32</ColorDepth>
+    <!-- Specifies the color depth for the display -->
+    <HorizontalResolution>1024</HorizontalResolution>
+    <!-- Specifies the horizontal resolution for the display -->
+    <VerticalResolution>768</VerticalResolution>
+    <!-- Specifies the vertical resolution for the display -->
+    <RefreshRate>60</RefreshRate>
+    <!-- Specifies the refresh rate for the display -->
+  </Display>
+</component>

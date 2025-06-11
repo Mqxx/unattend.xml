@@ -1,0 +1,44 @@
+<component
+  name="Microsoft-Windows-DNS-Client"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures DNS client settings, such as DNS server addresses -->
+  <!-- Configures DNS client settings during the specialize phase -->
+  <DNSDomain>example.com</DNSDomain>
+  <!-- Specifies the primary DNS domain for the computer -->
+  <DNSSuffixSearchOrder>
+    <!-- Specifies the DNS suffix search order -->
+    <DomainName wcm:action="add">example.com</DomainName>
+    <!-- Specifies a DNS suffix to include in the search order -->
+    <DomainName wcm:action="add">sub.example.com</DomainName>
+    <!-- Specifies an additional DNS suffix -->
+  </DNSSuffixSearchOrder>
+  <Interfaces>
+    <!-- Configures DNS settings for specific network interfaces -->
+    <Interface wcm:action="add">
+      <!-- Defines settings for a specific network interface -->
+      <Identifier>Local Area Connection</Identifier>
+      <!-- Specifies the name or identifier of the network interface -->
+      <DNSServerSearchOrder>
+        <!-- Specifies the DNS server search order for the interface -->
+        <IpAddress wcm:action="add">192.168.1.1</IpAddress>
+        <!-- Specifies a DNS server IP address -->
+        <IpAddress wcm:action="add">8.8.8.8</IpAddress>
+        <!-- Specifies an additional DNS server IP address -->
+      </DNSServerSearchOrder>
+      <DNSDomain>interface.example.com</DNSDomain>
+      <!-- Specifies the DNS domain for the interface -->
+      <EnableAdapterDomainNameRegistration>true</EnableAdapterDomainNameRegistration>
+      <!-- Enables or disables DNS registration for the interface -->
+      <DisableDynamicUpdate>false</DisableDynamicUpdate>
+      <!-- Enables or disables dynamic DNS updates for the interface -->
+    </Interface>
+  </Interfaces>
+  <UseDomainNameDevolution>true</UseDomainNameDevolution>
+  <!-- Enables or disables DNS domain name devolution -->
+</component>

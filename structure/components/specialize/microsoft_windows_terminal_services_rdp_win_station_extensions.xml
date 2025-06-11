@@ -1,0 +1,18 @@
+<component
+  name="Microsoft-Windows-TerminalServices-RDP-WinStationExtensions"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures Remote Desktop Protocol (RDP) extensions -->
+  <!-- Configures Remote Desktop Protocol (RDP) WinStation extensions settings during the specialize phase -->
+  <SecurityLayer>2</SecurityLayer>
+  <!-- Specifies the security layer for RDP connections -->
+  <UserAuthenticationRequired>1</UserAuthenticationRequired>
+  <!-- Specifies whether Network Level Authentication (NLA) is required -->
+  <MinEncryptionLevel>3</MinEncryptionLevel>
+  <!-- Specifies the minimum encryption level for RDP connections -->
+</component>

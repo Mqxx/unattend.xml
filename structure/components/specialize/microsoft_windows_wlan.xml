@@ -1,0 +1,52 @@
+<component
+  name="Microsoft-Windows-WLAN"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures wireless network settings, such as Wi-Fi profiles -->
+  <!-- Configures wireless network (WLAN) settings during the windowsPE phase -->
+  <WLANProfiles>
+    <!-- Configures WLAN profiles for network connections -->
+    <WLANProfile wcm:action="add">
+      <!-- Defines a WLAN profile -->
+      <ProfileName>MyWiFiProfile</ProfileName>
+      <!-- Specifies the name of the WLAN profile -->
+      <SSID>MyWiFiNetwork</SSID>
+      <!-- Specifies the SSID of the wireless network -->
+      <ConnectionType>ESS</ConnectionType>
+      <!-- Specifies the connection type (ESS for infrastructure, IBSS for ad-hoc) -->
+      <ConnectionMode>auto</ConnectionMode>
+      <!-- Specifies the connection mode (auto or manual) -->
+      <MSM>
+        <!-- Configures security and authentication settings for the WLAN profile -->
+        <security>
+          <!-- Configures security settings -->
+          <authEncryption>
+            <!-- Specifies authentication and encryption methods -->
+            <authentication>WPA2PSK</authentication>
+            <!-- Specifies the authentication method (e.g., WPA2PSK, WPA, Open) -->
+            <encryption>AES</encryption>
+            <!-- Specifies the encryption method (e.g., AES, TKIP) -->
+            <useOneX>false</useOneX>
+            <!-- Specifies whether 802.1X authentication is used -->
+          </authEncryption>
+          <sharedKey>
+            <!-- Specifies the shared key for the network -->
+            <keyType>passPhrase</keyType>
+            <!-- Specifies the key type (passPhrase or networkKey) -->
+            <protected>false</protected>
+            <!-- Specifies whether the key is encrypted -->
+            <keyMaterial>MyWiFiPassword</keyMaterial>
+            <!-- Specifies the passphrase or network key -->
+          </sharedKey>
+        </security>
+      </MSM>
+      <AutoSwitch>true</AutoSwitch>
+      <!-- Specifies whether the profile allows automatic switching to other networks -->
+    </WLANProfile>
+  </WLANProfiles>
+</component>

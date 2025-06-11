@@ -1,0 +1,89 @@
+<component
+  name="Microsoft-Windows-Firewall"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures Windows Firewall settings, such as rules and profiles -->
+  <!-- Configures Windows Firewall settings during the specialize phase -->
+  <GlobalSettings>
+    <!-- Configures global firewall settings -->
+    <AllowLocalPolicyMerge>true</AllowLocalPolicyMerge>
+    <!-- Specifies whether local firewall policy can merge with group policy -->
+    <AllowLocalIPsecPolicyMerge>true</AllowLocalIPsecPolicyMerge>
+    <!-- Specifies whether local IPsec policy can merge with group policy -->
+    <DefaultInboundAction>Block</DefaultInboundAction>
+    <!-- Specifies the default action for inbound connections -->
+    <DefaultOutboundAction>Allow</DefaultOutboundAction>
+    <!-- Specifies the default action for outbound connections -->
+    <DisableNotifications>false</DisableNotifications>
+    <!-- Enables or disables firewall notifications -->
+    <DisableStatefulFTP>true</DisableStatefulFTP>
+    <!-- Enables or disables stateful FTP filtering -->
+    <DisableStatefulPPTP>true</DisableStatefulPPTP>
+    <!-- Enables or disables stateful PPTP filtering -->
+    <DisableUnicastResponsesToMulticastBroadcast>true</DisableUnicastResponsesToMulticastBroadcast>
+    <!-- Disables unicast responses to multicast or broadcast traffic -->
+  </GlobalSettings>
+  <ProfileSettings>
+    <!-- Configures settings for specific firewall profiles -->
+    <Profile wcm:action="add">
+      <!-- Defines settings for a specific firewall profile -->
+      <ProfileType>Domain</ProfileType>
+      <!-- Specifies the firewall profile type (Domain, Private, Public) -->
+      <Enabled>true</Enabled>
+      <!-- Enables or disables the firewall profile -->
+      <DefaultInboundAction>Block</DefaultInboundAction>
+      <!-- Specifies the default action for inbound connections in the profile -->
+      <DefaultOutboundAction>Allow</DefaultOutboundAction>
+      <!-- Specifies the default action for outbound connections in the profile -->
+      <AllowInboundRules>true</AllowInboundRules>
+      <!-- Specifies whether inbound rules are allowed -->
+      <AllowLocalPolicyMerge>true</AllowLocalPolicyMerge>
+      <!-- Specifies whether local policy can merge with group policy for the profile -->
+      <AllowLocalIPsecPolicyMerge>true</AllowLocalIPsecPolicyMerge>
+      <!-- Specifies whether local IPsec policy can merge with group policy for the profile -->
+      <DisableNotifications>false</DisableNotifications>
+      <!-- Enables or disables notifications for the profile -->
+      <LogFileName>%SystemRoot%\System32\LogFiles\Firewall\pfirewall.log</LogFileName>
+      <!-- Specifies the path for the firewall log file -->
+      <LogMaxSize>4096</LogMaxSize>
+      <!-- Specifies the maximum size of the log file in KB -->
+      <LogDroppedConnections>true</LogDroppedConnections>
+      <!-- Specifies whether dropped connections are logged -->
+      <LogSuccessfulConnections>true</LogSuccessfulConnections>
+      <!-- Specifies whether successful connections are logged -->
+    </Profile>
+  </ProfileSettings>
+  <FirewallRules>
+    <!-- Configures specific firewall rules -->
+    <FirewallRule wcm:action="add">
+      <!-- Defines a specific firewall rule -->
+      <Name>Allow HTTP</Name>
+      <!-- Specifies the name of the firewall rule -->
+      <Description>Allows HTTP traffic</Description>
+      <!-- Specifies the description of the firewall rule -->
+      <Profile>Domain</Profile>
+      <!-- Specifies the profile to which the rule applies -->
+      <Direction>Inbound</Direction>
+      <!-- Specifies the direction of the rule (Inbound or Outbound) -->
+      <Action>Allow</Action>
+      <!-- Specifies the action for the rule (Allow or Block) -->
+      <Protocol>TCP</Protocol>
+      <!-- Specifies the protocol for the rule (TCP, UDP, etc.) -->
+      <LocalPort>80</LocalPort>
+      <!-- Specifies the local port for the rule -->
+      <RemotePort>Any</RemotePort>
+      <!-- Specifies the remote port for the rule -->
+      <LocalAddress>Any</LocalAddress>
+      <!-- Specifies the local address for the rule -->
+      <RemoteAddress>Any</RemoteAddress>
+      <!-- Specifies the remote address for the rule -->
+      <Enabled>true</Enabled>
+      <!-- Enables or disables the firewall rule -->
+    </FirewallRule>
+  </FirewallRules>
+</component>

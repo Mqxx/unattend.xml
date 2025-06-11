@@ -1,0 +1,32 @@
+<component
+  name="Microsoft-Windows-NetBT"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures NetBIOS over TCP/IP settings -->
+  <!-- Configures NetBIOS over TCP/IP settings during the specialize phase -->
+  <Interfaces>
+    <!-- Configures NetBIOS settings for specific network interfaces -->
+    <Interface wcm:action="add">
+      <!-- Defines settings for a specific network interface -->
+      <Identifier>Local Area Connection</Identifier>
+      <!-- Specifies the name or identifier of the network interface -->
+      <NetbiosOptions>1</NetbiosOptions>
+      <!-- Specifies the NetBIOS over TCP/IP configuration (0=Use DHCP, 1=Enable, 2=Disable) -->
+      <NameServerList>
+        <!-- Configures the WINS server list for the interface -->
+        <NameServer wcm:action="add">
+          <!-- Specifies a WINS server -->
+          <IpAddress>192.168.1.10</IpAddress>
+          <!-- Specifies the IP address of the WINS server -->
+        </NameServer>
+      </NameServerList>
+      <NodeType>8</NodeType>
+      <!-- Specifies the NetBIOS node type (1=B-node, 2=P-node, 4=M-node, 8=H-node) -->
+    </Interface>
+  </Interfaces>
+</component>

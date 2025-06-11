@@ -1,0 +1,75 @@
+<component
+  name="Microsoft-Windows-TCPIP"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures TCP/IP network settings, such as IP addresses and DNS -->
+  <!-- Configures TCP/IP settings for network interfaces during the specialize phase -->
+  <Interfaces>
+    <!-- Configures settings for specific network interfaces -->
+    <Interface wcm:action="add">
+      <!-- Defines settings for a specific network interface -->
+      <Identifier>Local Area Connection</Identifier>
+      <!-- Specifies the name or identifier of the network interface -->
+      <Ipv4Settings>
+        <!-- Configures IPv4 settings for the interface -->
+        <DhcpEnabled>true</DhcpEnabled>
+        <!-- Specifies whether DHCP is enabled for IPv4 -->
+        <Metric>10</Metric>
+        <!-- Specifies the interface metric for IPv4 -->
+        <RouterDiscoveryEnabled>true</RouterDiscoveryEnabled>
+        <!-- Specifies whether router discovery is enabled for IPv4 -->
+      </Ipv4Settings>
+      <Ipv6Settings>
+        <!-- Configures IPv6 settings for the interface -->
+        <DhcpEnabled>true</DhcpEnabled>
+        <!-- Specifies whether DHCP is enabled for IPv6 -->
+        <Metric>10</Metric>
+        <!-- Specifies the interface metric for IPv6 -->
+        <RouterDiscoveryEnabled>true</RouterDiscoveryEnabled>
+        <!-- Specifies whether router discovery is enabled for IPv6 -->
+      </Ipv6Settings>
+      <UnicastIpAddresses>
+        <!-- Configures static IP addresses for the interface -->
+        <IpAddress wcm:action="add">192.168.1.100/24</IpAddress>
+        <!-- Specifies a static IPv4 or IPv6 address with subnet mask or prefix length -->
+      </UnicastIpAddresses>
+      <Routes>
+        <!-- Configures static routes for the interface -->
+        <Route wcm:action="add">
+          <!-- Defines a static route -->
+          <Identifier>1</Identifier>
+          <!-- Specifies the route identifier -->
+          <Prefix>0.0.0.0/0</Prefix>
+          <!-- Specifies the destination prefix -->
+          <NextHopAddress>192.168.1.1</NextHopAddress>
+          <!-- Specifies the gateway address -->
+          <Metric>10</Metric>
+          <!-- Specifies the route metric -->
+        </Route>
+      </Routes>
+    </Interface>
+  </Interfaces>
+  <GlobalSettings>
+    <!-- Configures global TCP/IP settings -->
+    <DomainName>example.com</DomainName>
+    <!-- Specifies the primary DNS domain name -->
+    <EnableDynamicUpdate>true</EnableDynamicUpdate>
+    <!-- Specifies whether dynamic DNS updates are enabled -->
+    <EnableAdapterDomainNameRegistration>true</EnableAdapterDomainNameRegistration>
+    <!-- Specifies whether the adapter registers its name with DNS -->
+    <DisableDynamicUpdate>false</DisableDynamicUpdate>
+    <!-- Specifies whether dynamic DNS updates are disabled -->
+  </GlobalSettings>
+  <DNSServerSearchOrder>
+    <!-- Configures the DNS server search order -->
+    <IpAddress wcm:action="add">192.168.1.10</IpAddress>
+    <!-- Specifies a DNS server IP address -->
+  </DNSServerSearchOrder>
+  <DNSDomain>example.com</DNSDomain>
+  <!-- Specifies the DNS domain suffix -->
+</component>

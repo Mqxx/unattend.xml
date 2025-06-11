@@ -1,0 +1,25 @@
+<component
+  name="Microsoft-Windows-International-Core-WinPE"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures regional and language settings for the WinPE phase -->
+  <SetupUILanguage>
+    <!-- Specifies the language for the WinPE setup user interface -->
+    <UILanguage>en-US</UILanguage>
+  </SetupUILanguage>
+  <!-- Specifies the input locale (keyboard layout) for WinPE -->
+  <InputLocale>0409:00000409</InputLocale>
+  <!-- Specifies the system locale for non-Unicode applications in WinPE -->
+  <SystemLocale>en-US</SystemLocale>
+  <!-- Specifies the user locale for formatting numbers, dates, and times in WinPE -->
+  <UserLocale>en-US</UserLocale>
+  <!-- Specifies the UI language for non-Unicode applications in WinPE -->
+  <UILanguage>en-US</UILanguage>
+  <!-- Specifies the fallback UI language if the primary language is unavailable -->
+  <UILanguageFallback>en-US</UILanguageFallback>
+</component>

@@ -1,0 +1,88 @@
+<component
+  name="Microsoft-Windows-WinPE"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures WinPE-specific settings such as network connectivity or boot options -->
+  <!-- Configures WinPE-specific settings for the Windows Preinstallation Environment -->
+  <Setup>
+    <!-- Configures setup-related options for WinPE -->
+    <Environment>
+      <!-- Specifies environment variables for the WinPE session -->
+      <Variable wcm:action="add">
+        <!-- Specifies the name of the environment variable -->
+        <Name>CustomVariable</Name>
+        <!-- Specifies the value of the environment variable -->
+        <Value>CustomValue</Value>
+      </Variable>
+    </Environment>
+    <!-- Specifies the path to store WinPE setup logs -->
+    <LogPath>C:\Logs</LogPath>
+    <!-- Specifies whether to enable network connectivity in WinPE -->
+    <EnableNetwork>true</EnableNetwork>
+    <!-- Specifies whether to enable the firewall in WinPE -->
+    <EnableFirewall>true</EnableFirewall>
+    <!-- Specifies whether to restart the system after WinPE setup -->
+    <Restart>Restart</Restart>
+  </Setup>
+  <Drivers>
+    <!-- Configures driver-related settings for WinPE -->
+    <DriverPaths>
+      <!-- Specifies paths to driver packages for WinPE -->
+      <PathAndCredentials wcm:action="add" wcm:keyValue="Path1">
+        <!-- Specifies the path to a folder containing driver .inf files -->
+        <Path>C:\Drivers</Path>
+        <!-- Optional credentials to access the driver path -->
+        <Credentials>
+          <!-- Username for accessing the driver path -->
+          <Username>Administrator</Username>
+          <!-- Password for accessing the driver path -->
+          <Password>Password123</Password>
+          <!-- Domain for the credentials -->
+          <Domain>MyDomain</Domain>
+        </Credentials>
+      </PathAndCredentials>
+    </DriverPaths>
+  </Drivers>
+  <Network>
+    <!-- Configures network settings for WinPE -->
+    <Interfaces>
+      <!-- Configures specific network interfaces -->
+      <Interface wcm:action="add">
+        <!-- Specifies the identifier for the network interface -->
+        <Identifier>0</Identifier>
+        <!-- Specifies the IPv4 address for the interface -->
+        <IPv4Settings>
+          <DhcpEnabled>true</DhcpEnabled>
+          <Metric>10</Metric>
+        </IPv4Settings>
+        <!-- Specifies the IPv6 settings for the interface -->
+        <IPv6Settings>
+          <DhcpEnabled>true</DhcpEnabled>
+          <Metric>10</Metric>
+        </IPv6Settings>
+      </Interface>
+    </Interfaces>
+  </Network>
+  <PageFile>
+    <!-- Configures the page file settings for WinPE -->
+    <!-- Specifies the path for the page file -->
+    <Path>C:\pagefile.sys</Path>
+    <!-- Specifies the initial size of the page file in MB -->
+    <InitialSize>256</InitialSize>
+    <!-- Specifies the maximum size of the page file in MB -->
+    <MaximumSize>512</MaximumSize>
+  </PageFile>
+  <ScratchSpace>
+    <!-- Specifies the size of the scratch space in MB for WinPE -->
+    <Size>128</Size>
+  </ScratchSpace>
+  <TempPath>
+    <!-- Specifies the path for temporary files in WinPE -->
+    <Path>C:\Temp</Path>
+  </TempPath>
+</component>

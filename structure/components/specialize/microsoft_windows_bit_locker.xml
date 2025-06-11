@@ -1,0 +1,58 @@
+<component
+  name="Microsoft-Windows-BitLocker"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures BitLocker encryption settings -->
+  <!-- Configures BitLocker drive encryption settings -->
+  <EnableBitLocker>true</EnableBitLocker>
+  <!-- Enables or disables BitLocker encryption -->
+  <EncryptionType>Hardware</EncryptionType>
+  <!-- Specifies the type of encryption to use -->
+  <TPMOwnerPassword>Password123</TPMOwnerPassword>
+  <!-- Specifies the TPM owner password -->
+  <RecoveryPassword>AutoGen</RecoveryPassword>
+  <!-- Specifies the recovery password configuration -->
+  <RecoveryKey>
+    <!-- Configures the recovery key settings -->
+    <Path>C:\RecoveryKey.txt</Path>
+    <!-- Specifies the path to store the recovery key -->
+    <Pin>123456</Pin>
+    <!-- Specifies the PIN for the recovery key -->
+  </RecoveryKey>
+  <PrebootRecovery>true</PrebootRecovery>
+  <!-- Enables or disables preboot recovery -->
+  <StartupKey>
+    <!-- Configures the startup key settings -->
+    <Path>C:\StartupKey.bek</Path>
+    <!-- Specifies the path to store the startup key -->
+  </StartupKey>
+  <OSDrive>
+    <!-- Configures settings for the operating system drive -->
+    <EncryptionMethod>AES_128</EncryptionMethod>
+    <!-- Specifies the encryption method for the OS drive -->
+    <UseWipe>true</UseWipe>
+    <!-- Specifies whether to wipe the drive before encryption -->
+  </OSDrive>
+  <FixedDrives>
+    <!-- Configures encryption for fixed data drives -->
+    <Drive wcm:action="add">
+      <!-- Specifies a fixed data drive to encrypt -->
+      <DriveLetter>D:</DriveLetter>
+      <!-- Specifies the drive letter of the fixed drive -->
+      <EncryptionMethod>AES_256</EncryptionMethod>
+      <!-- Specifies the encryption method for the fixed drive -->
+    </Drive>
+  </FixedDrives>
+  <RemovableDrives>
+    <!-- Configures encryption for removable data drives -->
+    <Allow>true</Allow>
+    <!-- Allows or denies encryption for removable drives -->
+    <EncryptionMethod>AES_128</EncryptionMethod>
+    <!-- Specifies the encryption method for removable drives -->
+  </RemovableDrives>
+</component>

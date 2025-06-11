@@ -1,0 +1,42 @@
+<component
+  name="Microsoft-Windows-WinPE-FontSupport"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Enables font support for specific languages in WinPE, e.g., for Asian characters -->
+  <!-- Configures font support for specific languages in the WinPE phase -->
+  <Fonts>
+    <!-- Specifies font support for Arabic -->
+    <Arabic>true</Arabic>
+    <!-- Specifies font support for Baltic languages -->
+    <Baltic>true</Baltic>
+    <!-- Specifies font support for Central European languages -->
+    <CentralEurope>true</CentralEurope>
+    <!-- Specifies font support for Chinese (Simplified) -->
+    <ChineseSimplified>true</ChineseSimplified>
+    <!-- Specifies font support for Chinese (Traditional) -->
+    <ChineseTraditional>true</ChineseTraditional>
+    <!-- Specifies font support for Cyrillic languages -->
+    <Cyrillic>true</Cyrillic>
+    <!-- Specifies font support for Greek -->
+    <Greek>true</Greek>
+    <!-- Specifies font support for Hebrew -->
+    <Hebrew>true</Hebrew>
+    <!-- Specifies font support for Japanese -->
+    <Japanese>true</Japanese>
+    <!-- Specifies font support for Korean -->
+    <Korean>true</Korean>
+    <!-- Specifies font support for Thai -->
+    <Thai>true</Thai>
+    <!-- Specifies font support for Turkish -->
+    <Turkish>true</Turkish>
+    <!-- Specifies font support for Vietnamese -->
+    <Vietnamese>true</Vietnamese>
+    <!-- Specifies font support for Western European languages -->
+    <Western>true</Western>
+  </Fonts>
+</component>

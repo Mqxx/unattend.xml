@@ -1,0 +1,18 @@
+<component
+  name="Microsoft-Windows-Networking-MPSD"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures network settings, such as domain join, during the specialize phase -->
+  <!-- Configures Mobile Broadband Service (MPSD) settings during the specialize phase -->
+  <AutoConnectOrder>1</AutoConnectOrder>
+  <!-- Specifies the priority order for automatic connection to mobile broadband networks -->
+  <DisableAutoConnect>false</DisableAutoConnect>
+  <!-- Specifies whether automatic connection to mobile broadband networks is disabled -->
+  <DisableAutoConnectOnUnknownNetwork>false</DisableAutoConnectOnUnknownNetwork>
+  <!-- Specifies whether automatic connection is disabled on unknown mobile networks -->
+</component>

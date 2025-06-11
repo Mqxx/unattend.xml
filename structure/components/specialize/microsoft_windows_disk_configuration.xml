@@ -1,0 +1,60 @@
+<component
+  name="Microsoft-Windows-Disk-Configuration"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures disk-related settings, such as partition modifications -->
+  <!-- Configures disk and partition settings during the WinPE phase -->
+  <DiskConfiguration>
+    <!-- Specifies disk configuration settings -->
+    <WillShowUI>OnError</WillShowUI>
+    <!-- Controls whether the disk configuration UI is shown -->
+    <Disk wcm:action="add">
+      <!-- Defines the disk to configure -->
+      <DiskID>0</DiskID>
+      <!-- Specifies the ID of the disk to configure -->
+      <WillWipeDisk>true</WillWipeDisk>
+      <!-- Specifies whether to wipe the disk before partitioning -->
+      <CreatePartitions>
+        <!-- Defines partitions to create on the disk -->
+        <CreatePartition wcm:action="add">
+          <!-- Specifies a partition to create -->
+          <Order>1</Order>
+          <!-- Specifies the order of the partition -->
+          <Size>100</Size>
+          <!-- Specifies the size of the partition in MB -->
+          <Type>EFI</Type>
+          <!-- Specifies the type of partition (e.g., EFI, Primary, MSR, Recovery) -->
+          <Extend>false</Extend>
+          <!-- Specifies whether the partition extends to fill available space -->
+        </CreatePartition>
+      </CreatePartitions>
+      <ModifyPartitions>
+        <!-- Defines modifications to existing partitions -->
+        <ModifyPartition wcm:action="add">
+          <!-- Specifies a partition to modify -->
+          <Order>1</Order>
+          <!-- Specifies the order of the partition to modify -->
+          <PartitionID>1</PartitionID>
+          <!-- Specifies the ID of the partition to modify -->
+          <Format>FAT32</Format>
+          <!-- Specifies the file system format (e.g., FAT32, NTFS) -->
+          <Label>System</Label>
+          <!-- Specifies the label for the partition -->
+          <Letter>C</Letter>
+          <!-- Specifies the drive letter for the partition -->
+          <Active>true</Active>
+          <!-- Specifies whether the partition is active -->
+          <Extend>false</Extend>
+          <!-- Specifies whether the partition extends to fill available space -->
+          <PartitionType>Basic</PartitionType>
+          <!-- Specifies the partition type (e.g., Basic, Dynamic) -->
+        </ModifyPartition>
+      </ModifyPartitions>
+    </Disk>
+  </DiskConfiguration>
+</component>

@@ -1,0 +1,28 @@
+<component
+  name="Microsoft-Windows-PnpCustomizationsWinPE"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Enables adding drivers during the WinPE phase, e.g., for storage or network devices -->
+  <!-- Configures driver integration during the WinPE phase -->
+  <DriverPaths>
+    <!-- Specifies one or more paths to driver packages to be added during WinPE -->
+    <PathAndCredentials wcm:action="add" wcm:keyValue="Path1">
+      <!-- Defines the path to a folder containing driver .inf files -->
+      <Path>C:\Drivers</Path>
+      <!-- Optional credentials to access the driver path if required (e.g., for network shares) -->
+      <Credentials>
+        <!-- Username for accessing the driver path -->
+        <Username>Administrator</Username>
+        <!-- Password for accessing the driver path -->
+        <Password>Password123</Password>
+        <!-- Domain for the credentials -->
+        <Domain>MyDomain</Domain>
+      </Credentials>
+    </PathAndCredentials>
+  </DriverPaths>
+</component>

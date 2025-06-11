@@ -1,0 +1,118 @@
+<component
+  name="Microsoft-Windows-IE-InternetExplorer"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Configures Internet Explorer settings, such as homepage and security zones -->
+  <!-- Configures Internet Explorer settings during the oobeSystem phase -->
+  <Home_Page>https://www.example.com</Home_Page>
+  <!-- Specifies the default home page for the browser -->
+  <SearchScopes>
+    <!-- Configures search providers for the browser -->
+    <Scope wcm:action="add">
+      <!-- Defines a search provider -->
+      <ScopeKey>SearchProvider1</ScopeKey>
+      <!-- Specifies a unique key for the search provider -->
+      <ScopeDisplayName>Google</ScopeDisplayName>
+      <!-- Specifies the display name of the search provider -->
+      <ScopeUrl>https://www.google.com/search?q={searchTerms}</ScopeUrl>
+      <!-- Specifies the URL template for the search provider -->
+      <ScopeDefault>true</ScopeDefault>
+      <!-- Specifies whether this is the default search provider -->
+      <SuggestionsURL>https://www.google.com/complete/search?output=toolbar&q={searchTerms}</SuggestionsURL>
+      <!-- Specifies the URL for search suggestions -->
+      <FaviconURL>https://www.google.com/favicon.ico</FaviconURL>
+      <!-- Specifies the favicon URL for the search provider -->
+    </Scope>
+  </SearchScopes>
+  <DisableAccelerators>true</DisableAccelerators>
+  <!-- Disables Internet Explorer accelerators -->
+  <DisableFirstRunCustomize>true</DisableFirstRunCustomize>
+  <!-- Disables the first-run customization wizard -->
+  <DisableOOBAccelerators>true</DisableOOBAccelerators>
+  <!-- Disables out-of-box accelerators -->
+  <FilterLevel>High</FilterLevel>
+  <!-- Specifies the phishing filter level (Low, Medium, High) -->
+  <SuggestedSitesEnabled>false</SuggestedSitesEnabled>
+  <!-- Enables or disables suggested sites -->
+  <PlaySound>true</PlaySound>
+  <!-- Enables or disables navigation sounds -->
+  <ShowInformationBar>true</ShowInformationBar>
+  <!-- Enables or disables the information bar -->
+  <BlockPopups>Yes</BlockPopups>
+  <!-- Specifies whether to block pop-ups (Yes, No, Prompt) -->
+  <IEWelcomeMsg>true</IEWelcomeMsg>
+  <!-- Enables or disables the Internet Explorer welcome message -->
+  <CompanyName>Example Corp</CompanyName>
+  <!-- Specifies the company name for branding -->
+  <Window_Title_CN>Example Browser</Window_Title_CN>
+  <!-- Specifies a custom window title -->
+  <FavoritesDelete>true</FavoritesDelete>
+  <!-- Deletes existing favorites -->
+  <FavoritesOnTop>true</FavoritesOnTop>
+  <!-- Places favorites at the top of the menu -->
+  <FavoritesList>
+    <!-- Configures a list of favorites -->
+    <FavoriteItem wcm:action="add">
+      <!-- Defines a favorite item -->
+      <FavID>Favorite1</FavID>
+      <!-- Specifies a unique ID for the favorite -->
+      <FavTitle>Example Site</FavTitle>
+      <!-- Specifies the title of the favorite -->
+      <FavURL>https://www.example.com</FavURL>
+      <!-- Specifies the URL of the favorite -->
+    </FavoriteItem>
+  </FavoritesList>
+  <FeedList>
+    <!-- Configures a list of RSS feeds -->
+    <FeedItem wcm:action="add">
+      <!-- Defines an RSS feed -->
+      <FeedID>Feed1</FeedID>
+      <!-- Specifies a unique ID for the feed -->
+      <FeedTitle>Example Feed</FeedTitle>
+      <!-- Specifies the title of the feed -->
+      <FeedURL>https://www.example.com/feed</FeedURL>
+      <!-- Specifies the URL of the feed -->
+    </FeedItem>
+  </FeedList>
+  <StartPages>
+    <!-- Configures additional start pages -->
+    <StartPage wcm:action="add">
+      <!-- Defines an additional start page -->
+      <StartPageKey>Page1</StartPageKey>
+      <!-- Specifies a unique key for the start page -->
+      <Url>https://www.example.com</Url>
+      <!-- Specifies the URL of the start page -->
+    </StartPage>
+  </StartPages>
+  <SecurityZones>
+    <!-- Configures security zone settings -->
+    <Zone wcm:action="add">
+      <!-- Defines a security zone -->
+      <ZoneID>3</ZoneID>
+      <!-- Specifies the zone ID (0=Local, 1=Intranet, 2=Trusted, 3=Internet, 4=Restricted) -->
+      <ZoneName>Internet</ZoneName>
+      <!-- Specifies the name of the zone -->
+      <MinLevel>Medium</MinLevel>
+      <!-- Specifies the minimum security level for the zone -->
+      <CurrentLevel>Medium-high</CurrentLevel>
+      <!-- Specifies the current security level for the zone -->
+      <Flags>1</Flags>
+      <!-- Specifies additional flags for the zone -->
+    </Zone>
+  </SecurityZones>
+  <TrustedSites>
+    <!-- Configures trusted sites for the browser -->
+    <Site wcm:action="add">
+      <!-- Defines a trusted site -->
+      <SiteName>example.com</SiteName>
+      <!-- Specifies the domain or URL of the trusted site -->
+      <SiteType>URL</SiteType>
+      <!-- Specifies the type of site (URL or Domain) -->
+    </Site>
+  </TrustedSites>
+</component>
