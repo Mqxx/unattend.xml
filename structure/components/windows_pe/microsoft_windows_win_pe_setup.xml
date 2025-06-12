@@ -1,0 +1,11 @@
+<component
+  name="Microsoft-Windows-WinPE-Setup"
+  processorArchitecture="amd64"
+  publicKeyToken="31bf3856ad364e35"
+  language="neutral"
+  versionScope="nonSxS"
+  xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- Controls setup behavior in WinPE, e.g., displaying setup screens or installation options -->
+</component>
