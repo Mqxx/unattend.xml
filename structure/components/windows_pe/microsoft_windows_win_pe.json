@@ -1,0 +1,121 @@
+{
+  "component": {
+    "#comments": [
+      "Configures WinPE-specific settings such as network connectivity or boot options",
+      "Configures WinPE-specific settings for the Windows Preinstallation Environment"
+    ],
+    "@name": "Microsoft-Windows-WinPE",
+    "@processorArchitecture": "amd64",
+    "@publicKeyToken": "31bf3856ad364e35",
+    "@language": "neutral",
+    "@versionScope": "nonSxS",
+    "@xmlns:wcm": "http://schemas.microsoft.com/WMIConfig/2002/State",
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "Setup": {
+      "#comments": [
+        "Configures setup-related options for WinPE",
+        "Specifies the path to store WinPE setup logs",
+        "Specifies whether to enable network connectivity in WinPE",
+        "Specifies whether to enable the firewall in WinPE",
+        "Specifies whether to restart the system after WinPE setup"
+      ],
+      "Environment": {
+        "#comments": [
+          "Specifies environment variables for the WinPE session"
+        ],
+        "Variable": {
+          "#comments": [
+            "Specifies the name of the environment variable",
+            "Specifies the value of the environment variable"
+          ],
+          "@wcm:action": "add",
+          "Name": "CustomVariable",
+          "Value": "CustomValue"
+        }
+      },
+      "LogPath": "C:\\Logs",
+      "EnableNetwork": "true",
+      "EnableFirewall": "true",
+      "Restart": "Restart"
+    },
+    "Drivers": {
+      "#comments": [
+        "Configures driver-related settings for WinPE"
+      ],
+      "DriverPaths": {
+        "#comments": [
+          "Specifies paths to driver packages for WinPE"
+        ],
+        "PathAndCredentials": {
+          "#comments": [
+            "Specifies the path to a folder containing driver .inf files",
+            "Optional credentials to access the driver path"
+          ],
+          "@wcm:action": "add",
+          "@wcm:keyValue": "Path1",
+          "Path": "C:\\Drivers",
+          "Credentials": {
+            "#comments": [
+              "Username for accessing the driver path",
+              "Password for accessing the driver path",
+              "Domain for the credentials"
+            ],
+            "Username": "Administrator",
+            "Password": "Password123",
+            "Domain": "MyDomain"
+          }
+        }
+      }
+    },
+    "Network": {
+      "#comments": [
+        "Configures network settings for WinPE"
+      ],
+      "Interfaces": {
+        "#comments": [
+          "Configures specific network interfaces"
+        ],
+        "Interface": {
+          "#comments": [
+            "Specifies the identifier for the network interface",
+            "Specifies the IPv4 address for the interface",
+            "Specifies the IPv6 settings for the interface"
+          ],
+          "@wcm:action": "add",
+          "Identifier": "0",
+          "IPv4Settings": {
+            "DhcpEnabled": "true",
+            "Metric": "10"
+          },
+          "IPv6Settings": {
+            "DhcpEnabled": "true",
+            "Metric": "10"
+          }
+        }
+      }
+    },
+    "PageFile": {
+      "#comments": [
+        "Configures the page file settings for WinPE",
+        "Specifies the path for the page file",
+        "Specifies the initial size of the page file in MB",
+        "Specifies the maximum size of the page file in MB"
+      ],
+      "Path": "C:\\pagefile.sys",
+      "InitialSize": "256",
+      "MaximumSize": "512"
+    },
+    "ScratchSpace": {
+      "#comments": [
+        "Specifies the size of the scratch space in MB for WinPE"
+      ],
+      "Size": "128"
+    },
+    "TempPath": {
+      "#comments": [
+        "Specifies the path for temporary files in WinPE"
+      ],
+      "Path": "C:\\Temp"
+    }
+  }
+}

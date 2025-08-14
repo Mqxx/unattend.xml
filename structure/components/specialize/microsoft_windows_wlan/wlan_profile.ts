@@ -1,4 +1,5 @@
 export function wlanProfile(
+  profiles : object,
   profileName: string,
   ssid: string,
   connectionType: 'ESS' | 'IBSS',
@@ -20,6 +21,17 @@ export function wlanProfile(
   autoSwitch: boolean = true
 ) {
   return {
-    
+    profile: {
+      'WLANProfile': {
+        '@wcm:action': 'add',
+        'ProfileName': profileName,
+        'SSID': ssid,
+        'ConnectionType': connectionType,
+        'ConnectionMode': connectionMode,
+        'MSM': msm,
+        'AutoSwitch': autoSwitch
+      }
+    },
+    profiles
   }
 }
