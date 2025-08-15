@@ -8,4 +8,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
   <!-- Defines regional settings such as language and locale for the OOBE phase -->
+  <!-- Configures international settings for the user during the oobeSystem phase -->
+  <InputLocale>de-DE</InputLocale>
+  <!-- Specifies the input locale (keyboard layout) for the user -->
+  <SystemLocale>de-DE</SystemLocale>
+  <!-- Specifies the system locale for non-Unicode applications -->
+  <UILanguage>de-DE</UILanguage>
+  <!-- Specifies the user interface language -->
+  <UILanguageFallback>en-US</UILanguageFallback>
+  <!-- Specifies the fallback language for the user interface -->
+  <UserLocale>de-DE</UserLocale>
+  <!-- Specifies the user locale for regional settings like date and time formats -->
 </component>
