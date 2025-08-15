@@ -8,12 +8,19 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
   <!-- Configures user-specific deployment settings in audit mode, such as running synchronous commands -->
-  <!-- Configures deployment settings during the auditSystem phase -->
-  <Reseal>
-    <!-- Configures settings for resealing the system in audit mode -->
-    <ForceShutdownNow>false</ForceShutdownNow>
-    <!-- Specifies whether to force an immediate shutdown after resealing -->
-    <Mode>Audit</Mode>
-    <!-- Specifies the mode to enter after resealing (Audit or OOBE) -->
-  </Reseal>
+  <!-- Configures deployment settings during the auditUser phase -->
+  <RunSynchronous>
+    <!-- Configures synchronous commands to run during auditUser phase -->
+    <RunSynchronousCommand wcm:action="add">
+      <!-- Defines a synchronous command to execute -->
+      <Order>1</Order>
+      <!-- Specifies the execution order of the command -->
+      <Path>cmd.exe /c echo AuditUser > C:\audituser.txt</Path>
+      <!-- Specifies the command to execute -->
+      <Description>Creates a file during auditUser phase</Description>
+      <!-- Specifies the description of the command -->
+      <WillReboot>Never</WillReboot>
+      <!-- Specifies whether the command requires a reboot (Never, OnRequest, Always) -->
+    </RunSynchronousCommand>
+  </RunSynchronous>
 </component>
