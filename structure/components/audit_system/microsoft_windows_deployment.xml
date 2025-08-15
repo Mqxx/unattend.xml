@@ -8,4 +8,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
   <!-- Configures system deployment settings in audit mode, such as reseal options -->
+  <!-- Configures deployment settings during the auditSystem phase -->
+  <Reseal>
+    <!-- Configures settings for resealing the system in audit mode -->
+    <ForceShutdownNow>false</ForceShutdownNow>
+    <!-- Specifies whether to force an immediate shutdown after resealing -->
+    <Mode>Audit</Mode>
+    <!-- Specifies the mode to enter after resealing (Audit or OOBE) -->
+  </Reseal>
 </component>
