@@ -8,56 +8,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
   <!-- Configures deployment-specific settings, such as running synchronous commands -->
-  <!-- Configures deployment-related tasks during the specialize phase -->
-  <RunSynchronous>
-    <!-- Specifies synchronous commands to run during the specialize phase -->
-    <RunSynchronousCommand wcm:action="add">
-      <!-- Defines a synchronous command to execute -->
-      <Order>1</Order>
-      <!-- Specifies the execution order of the command -->
-      <Path>cmd.exe /c echo Hello > C:\log.txt</Path>
-      <!-- Specifies the path to the command or script to execute -->
-      <Description>Creates a log file</Description>
-      <!-- Provides a description of the command -->
-      <Credentials>
-        <!-- Specifies credentials for running the command, if needed -->
-        <Domain>MyDomain</Domain>
-        <!-- Specifies the domain for the credentials -->
-        <Username>Administrator</Username>
-        <!-- Specifies the username for the credentials -->
-        <Password>Password123</Password>
-        <!-- Specifies the password for the credentials -->
-      </Credentials>
-      <WillReboot>Never</WillReboot>
-      <!-- Specifies whether the system reboots after the command (Always, OnRequest, Never) -->
-    </RunSynchronousCommand>
-  </RunSynchronous>
-  <RunAsynchronous>
-    <!-- Specifies asynchronous commands to run during the specialize phase -->
-    <RunAsynchronousCommand wcm:action="add">
-      <!-- Defines an asynchronous command to execute -->
-      <Order>1</Order>
-      <!-- Specifies the execution order of the command -->
-      <Path>cmd.exe /c echo Async > C:\async_log.txt</Path>
-      <!-- Specifies the path to the command or script to execute -->
-      <Description>Creates an asynchronous log file</Description>
-      <!-- Provides a description of the command -->
-      <Credentials>
-        <!-- Specifies credentials for running the command, if needed -->
-        <Domain>MyDomain</Domain>
-        <!-- Specifies the domain for the credentials -->
-        <Username>Administrator</Username>
-        <!-- Specifies the username for the credentials -->
-        <Password>Password123</Password>
-        <!-- Specifies the password for the credentials -->
-      </Credentials>
-    </RunAsynchronousCommand>
-  </RunAsynchronous>
-  <Generalize>
-    <!-- Configures settings for system generalization (sysprep) -->
-    <Mode>Online</Mode>
-    <!-- Specifies the generalization mode (Online or Offline) -->
-    <ForceShutdownNow>false</ForceShutdownNow>
-    <!-- Specifies whether to force an immediate shutdown after generalization -->
-  </Generalize>
+  <!-- Configures deployment settings during the specialize phase -->
+  <ExtendOSPartition>
+    <!-- Configures the extension of the OS partition -->
+    <Extend>true</Extend>
+    <!-- Specifies whether to extend the OS partition to fill the disk -->
+  </ExtendOSPartition>
 </component>
