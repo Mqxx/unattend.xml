@@ -8,4 +8,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
   <!-- Controls OOBE deployment options, such as reseal settings for the OOBE phase -->
+  <!-- Configures deployment settings during the generalize phase -->
+  <Generalize>
+    <!-- Configures settings for the Sysprep generalize phase -->
+    <ForceShutdownNow>false</ForceShutdownNow>
+    <!-- Specifies whether to force an immediate shutdown after generalization -->
+    <Mode>OutOfBoxExperience</Mode>
+    <!-- Specifies the mode for Sysprep generalization (OutOfBoxExperience or Audit) -->
+  </Generalize>
 </component>
