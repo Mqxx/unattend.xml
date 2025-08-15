@@ -8,4 +8,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
   <!-- Configures User Account Control (UAC) settings during the OOBE phase -->
+  <!-- Configures User Account Control (UAC) settings during the oobeSystem phase -->
+  <EnableLUA>true</EnableLUA>
+  <!-- Specifies whether User Account Control (UAC) is enabled -->
 </component>
