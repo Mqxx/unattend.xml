@@ -1,6 +1,6 @@
-import { ConnectionMode } from "./wlan_profile/connection_mode.ts";
-import { ConnectionType } from "./wlan_profile/connection_type.ts";
-import { MSM } from "./wlan_profile/msm.ts";
+import type { ConnectionMode } from "./wlan_profile/connection_mode.ts";
+import type { ConnectionType } from "./wlan_profile/connection_type.ts";
+import type { MSM } from "./wlan_profile/msm.ts";
 
 
 /** Defines a WLAN profile. */

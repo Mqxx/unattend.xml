@@ -1,4 +1,4 @@
-import { wlanProfile, WlanProfile } from "./wlan_profile.ts";
+import { wlanProfile, type WlanProfile } from "./wlan_profile.ts";
 
 /** Configures WLAN profiles for network connections. */
 export type WlanProfiles = WlanProfile[]
