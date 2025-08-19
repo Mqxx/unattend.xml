@@ -1,7 +1,7 @@
 import * as xml from "jsr:@libs/xml";
-import { wlanProfiles } from "./structure/components/specialize/microsoft_windows_wlan/wlan_profiles.ts";
+import { microsoftWindowsWlan } from "./structure/components/specialize/microsoft_windows_wlan.ts";
 
-console.log(xml.stringify(wlanProfiles([{
+console.log(xml.stringify(microsoftWindowsWlan([{
   autoSwitch: true,
   connectionMode: "auto",
   connectionType: "ESS",
