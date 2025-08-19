@@ -1,37 +1,34 @@
-export function wlanProfile(
-  profiles : object,
-  profileName: string,
-  ssid: string,
-  connectionType: 'ESS' | 'IBSS',
-  connectionMode: 'auto' | 'manual',
-  msm: {
-    security: {
-      authEncryption: {
-        authentication: 'WPA2PSK' | 'WPA' | 'Open' | 'WPA2' | 'WPAPSK',
-        encryption: 'AES' | 'TKIP' | 'None',
-        useOneX: boolean
-      }
-      sharedKey: {
-        keyType: 'passPhrase' | 'networkKey',
-        protected: boolean,
-        keyMaterial: string
-      }
-    }
-  },
-  autoSwitch: boolean = true
-) {
+import { ConnectionMode } from "./wlan_profile/connection_mode.ts";
+import { ConnectionType } from "./wlan_profile/connection_type.ts";
+import { MSM } from "./wlan_profile/msm.ts";
+
+
+/** Defines a WLAN profile. */
+export interface WlanProfile {
+  /** Specifies the name of the WLAN profile. */
+  profileName : string,
+  /** Specifies the SSID of the wireless network. */
+  ssid : string,
+  /** Specifies the connection type. */
+  connectionType : ConnectionType,
+  /** Specifies the connection mode. */
+  connectionMode : ConnectionMode,
+  /** Configures security and authentication settings for the WLAN profile. */
+  msm : MSM,
+  /** Specifies whether the profile allows automatic switching to other networks. */
+  autoSwitch : boolean
+}
+
+export function wlanProfile(parameter : WlanProfile) {
   return {
-    profile: {
-      'WLANProfile': {
-        '@wcm:action': 'add',
-        'ProfileName': profileName,
-        'SSID': ssid,
-        'ConnectionType': connectionType,
-        'ConnectionMode': connectionMode,
-        'MSM': msm,
-        'AutoSwitch': autoSwitch
-      }
-    },
-    profiles
+    'WLANProfile': {
+      '@wcm:action': 'add',
+      'ProfileName': parameter.profileName,
+      'SSID': parameter.ssid,
+      'ConnectionType': parameter.connectionType,
+      'ConnectionMode': parameter.connectionMode,
+      'MSM': parameter.msm,
+      'AutoSwitch': parameter.autoSwitch
+    }
   }
 }
