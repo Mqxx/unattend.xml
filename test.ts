@@ -1,24 +1,4 @@
 import * as xml from "jsr:@libs/xml";
-import { microsoftWindowsWlan } from "./structure/components/specialize/microsoft_windows_wlan.ts";
+import { microsoftWindowsTerminalServicesRdpWinStationExtensions } from "./structure/components/specialize/microsoft_windows_terminal_services_rdp_win_station_extensions.ts";
 
-console.log(xml.stringify(microsoftWindowsWlan([{
-  autoSwitch: true,
-  connectionMode: "auto",
-  connectionType: "ESS",
-  profileName: 'MyWiFiProfile',
-  ssid: 'MyWiFiNetwork',
-  msm: {
-    security: {
-      authEncryption: {
-        authentication: "WPA2PSK",
-        encryption: "AES",
-        useOneX: false
-      },
-      sharedKey: {
-        keyMaterial: 'MyWiFiPassword',
-        keyType: "passPhrase",
-        protected: false
-      }
-    }
-  }
-}])));
+console.log(xml.stringify(microsoftWindowsTerminalServicesRdpWinStationExtensions(1, true, 1)));

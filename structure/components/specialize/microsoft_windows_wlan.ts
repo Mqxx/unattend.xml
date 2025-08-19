@@ -1,16 +1,14 @@
+import { component } from "../../component.ts";
 import { wlanProfiles, type WlanProfiles } from "./microsoft_windows_wlan/wlan_profiles.ts";
 
+/**
+ * Configures wireless network settings, such as Wi-Fi profiles
+ * 
+ * @param profiles List of WLAN profiles
+ */
 export function microsoftWindowsWlan(profiles : WlanProfiles) {
-  return {
-    'component': {
-      '@name': 'Microsoft-Windows-WLAN',
-      '@processorArchitecture': 'amd64',
-      '@publicKeyToken': '31bf3856ad364e35',
-      '@language': 'neutral',
-      '@versionScope': 'nonSxS',
-      '@xmlns:wcm': 'http://schemas.microsoft.com/WMIConfig/2002/State',
-      '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-      'WLANProfiles': wlanProfiles(profiles)
-    }
-  }
+  return component(
+    'Microsoft-Windows-WLAN',
+    {'WLANProfiles': wlanProfiles(profiles)}
+  )
 }
