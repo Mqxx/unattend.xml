@@ -7,5 +7,51 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures Windows Update settings for an offline Windows image -->
+  <!-- Configures Windows Update Services (WSUS) client settings -->
+  <WUServer>http://wsus.contoso.com</WUServer>
+  <!-- Specifies the URL of the WSUS server -->
+  <WUStatusServer>http://wsus.contoso.com</WUStatusServer>
+  <!-- Specifies the URL of the WSUS status server (usually same as WUServer) -->
+  <TargetGroup>Workstations</TargetGroup>
+  <!-- Specifies the WSUS computer target group name -->
+  <TargetGroupEnabled>true</TargetGroupEnabled>
+  <!-- Enables or disables client-side targeting:
+       true  = Client uses specified TargetGroup
+       false = Target group assigned by WSUS administrator -->
+  <DetectionFrequency>4</DetectionFrequency>
+  <!-- Detection frequency in hours (1 to 22):
+       Specifies how often the client checks WSUS for updates -->
+  <DetectionFrequencyEnabled>true</DetectionFrequencyEnabled>
+  <!-- Enables or disables scheduled detection frequency:
+       true  = Use DetectionFrequency value
+       false = Use default WSUS schedule -->
+  <ElevateNonAdmins>true</ElevateNonAdmins>
+  <!-- Allows non-administrators to approve or install updates:
+       true  = Non-admins can install updates
+       false = Only admins can approve/update -->
+  <AutoInstallMinorUpdates>true</AutoInstallMinorUpdates>
+  <!-- Automatically install minor updates without user approval:
+       true  = Install automatically
+       false = Require approval or prompt -->
+  <NoAutoRebootWithLoggedOnUsers>false</NoAutoRebootWithLoggedOnUsers>
+  <!-- Prevents automatic restart if a user is logged on:
+       true  = Do not reboot automatically
+       false = Allow reboot after update installation -->
+  <ScheduledInstallDay>0</ScheduledInstallDay>
+  <!-- Scheduled day for installation:
+       0 = Every day, 1–7 = Specific weekday (Sunday = 1) -->
+  <ScheduledInstallTime>3</ScheduledInstallTime>
+  <!-- Hour of scheduled installation (0 to 23, local time) -->
+  <UseWUServer>true</UseWUServer>
+  <!-- Indicates whether to use a WSUS server:
+       true  = Use specified WUServer and WUStatusServer
+       false = Connect directly to Microsoft Update -->
+  <RebootWarningTimeout>15</RebootWarningTimeout>
+  <!-- Time (in minutes) for reboot warning prompt -->
+  <RescheduleWaitTime>5</RescheduleWaitTime>
+  <!-- Time (in minutes) the client waits to reschedule missed installations -->
+  <EnableFeaturedSoftware>false</EnableFeaturedSoftware>
+  <!-- Specifies whether to enable Microsoft featured software through WSUS:
+       true  = Allow featured software
+       false = Do not allow -->
 </component>

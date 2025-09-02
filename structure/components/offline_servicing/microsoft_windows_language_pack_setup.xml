@@ -7,5 +7,45 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Adds or configures language packs in an offline Windows image -->
+  <!-- Configures installation and removal of Windows language packs -->
+  <UILanguage>de-DE</UILanguage>
+  <!-- Specifies the default user interface language to install -->
+  <InputLocale>0407:00000407</InputLocale>
+  <!-- Specifies the default keyboard/input locale
+       Example: 0407:00000407 = German (Germany) -->
+  <SystemLocale>de-DE</SystemLocale>
+  <!-- Specifies the language for non-Unicode programs -->
+  <UserLocale>de-DE</UserLocale>
+  <!-- Specifies the default locale for formats (date, time, currency, etc.) -->
+  <SetupUILanguage>
+    <!-- Specifies the language used by setup itself -->
+    <UILanguage>en-US</UILanguage>
+    <!-- Example: use English for setup UI even if system language is German -->
+  </SetupUILanguage>
+  <LanguagePacks>
+    <!-- Specifies language packs to install -->
+    <LanguagePack wcm:action="add">
+      <Filename>lp.cab</Filename>
+      <!-- CAB file name of the language pack -->
+      <Path>C:\LangPacks\de-de</Path>
+      <!-- Path to the folder containing the language pack -->
+    </LanguagePack>
+    <LanguagePack wcm:action="add">
+      <Filename>lp.cab</Filename>
+      <Path>C:\LangPacks\fr-fr</Path>
+    </LanguagePack>
+  </LanguagePacks>
+  <RemoveLanguagePacks>
+    <!-- Specifies language packs to remove -->
+    <LanguagePack wcm:action="add">
+      <Filename>lp.cab</Filename>
+      <Path>C:\LangPacks\zh-cn</Path>
+    </LanguagePack>
+  </RemoveLanguagePacks>
+  <FallbackLanguage>en-US</FallbackLanguage>
+  <!-- Specifies the fallback language if the primary language is unavailable -->
+  <LicenseAccepted>true</LicenseAccepted>
+  <!-- Indicates that the license terms for language packs are accepted:
+       true  = License is accepted
+       false = Installation may be blocked -->
 </component>

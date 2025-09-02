@@ -7,5 +7,42 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Removes license-related information during Sysprep generalization -->
+  <!-- Configures Windows Software Protection Platform (SPP) and licensing -->
+  <SkipRearm>false</SkipRearm>
+  <!-- Determines whether to skip the rearm count during sysprep:
+       true  = Skip rearm
+       false = Decrement rearm count -->
+  <NoGenTicket>false</NoGenTicket>
+  <!-- Controls generation of activation tickets:
+       true  = Do not generate tickets
+       false = Generate activation tickets -->
+  <SkipLicenseActivation>false</SkipLicenseActivation>
+  <!-- Determines whether Windows activation is skipped:
+       true  = Skip activation
+       false = Perform activation -->
+  <ProductKey>
+    <!-- Optional: specify product key for SPP activation -->
+    <Key>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</Key>
+  </ProductKey>
+  <Activation>
+    <!-- Controls activation behavior -->
+    <Enable>true</Enable>
+    <!-- true  = Perform activation
+         false = Skip activation -->
+    <AutoActivate>true</AutoActivate>
+    <!-- Automatically activate Windows if possible -->
+    <AutoNotify>false</AutoNotify>
+    <!-- Show activation notifications:
+         true  = Display notifications
+         false = Do not display -->
+  </Activation>
+  <GracePeriod>
+    <!-- Configures evaluation/grace period settings -->
+    <Days>30</Days>
+    <!-- Number of days in grace period before activation is required -->
+  </GracePeriod>
+  <UseDefaultPID>true</UseDefaultPID>
+  <!-- Determines whether to use the default Product ID:
+       true  = Use default PID from image
+       false = Use custom PID -->
 </component>

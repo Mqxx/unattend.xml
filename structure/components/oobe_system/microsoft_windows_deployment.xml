@@ -7,5 +7,54 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Controls OOBE deployment options, such as reseal settings for the OOBE phase -->
+  <!-- Configures Windows deployment settings during the oobeSystem phase -->
+  <Reseal>
+    <!-- Controls Sysprep resealing behavior -->
+    <Mode>OOBE</Mode>
+    <!-- Options:
+         OOBE = Out-of-Box Experience shown to end user
+         Audit = Boot into Audit Mode for testing -->
+  </Reseal>
+  <RunSynchronous>
+    <!-- Specifies synchronous commands that run during OOBE -->
+    <RunSynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <!-- Execution order -->
+      <Description>Apply custom branding</Description>
+      <!-- Description of the command -->
+      <Path>C:\Scripts\Branding.cmd</Path>
+      <!-- Full path to the script or executable -->
+    </RunSynchronousCommand>
+    <RunSynchronousCommand wcm:action="add">
+      <Order>2</Order>
+      <Description>Install custom applications</Description>
+      <Path>C:\Scripts\InstallApps.cmd</Path>
+    </RunSynchronousCommand>
+  </RunSynchronous>
+  <RunAsynchronous>
+    <!-- Specifies asynchronous commands that run during OOBE -->
+    <RunAsynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <Description>Initialize background services</Description>
+      <Path>C:\Scripts\InitServices.cmd</Path>
+    </RunAsynchronousCommand>
+  </RunAsynchronous>
+  <ExtendOSPartition>true</ExtendOSPartition>
+  <!-- Automatically extend OS partition to fill unallocated space:
+       true  = Partition is extended automatically
+       false = Partition size remains fixed -->
+  <Respecialize>true</Respecialize>
+  <!-- Indicates whether to run specialize phase again after resealing:
+       true  = Specialize phase runs again
+       false = No respecialize -->
+  <DoNotCleanUpNonPresentDevices>false</DoNotCleanUpNonPresentDevices>
+  <!-- Controls whether to clean up drivers for devices not present:
+       true  = Keep drivers for non-present devices
+       false = Clean up drivers (default) -->
+  <Generalize>true</Generalize>
+  <!-- Determines whether the system should be generalized:
+       true  = Remove unique system information (SID, logs)
+       false = Keep system-specific info (not typical for OOBE phase) -->
+  <ResealMode>OOBE</ResealMode>
+  <!-- Alternative tag to explicitly set reseal mode (for clarity) -->
 </component>

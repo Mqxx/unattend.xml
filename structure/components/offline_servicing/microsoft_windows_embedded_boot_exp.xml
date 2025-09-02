@@ -7,5 +7,36 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures boot experience settings for embedded or specialized offline Windows images -->
+  <!-- Configures Windows Embedded Boot Experience settings -->
+  <BootLogoEnabled>true</BootLogoEnabled>
+  <!-- Enables or disables the boot logo:
+       true  = Display boot logo
+       false = No boot logo displayed -->
+  <BootAnimationEnabled>true</BootAnimationEnabled>
+  <!-- Enables or disables boot animation:
+       true  = Show animation during boot
+       false = Disable animation -->
+  <BootUXOverride>false</BootUXOverride>
+  <!-- Allows overriding default boot user experience:
+       true  = Custom boot UX applied
+       false = Use default boot UX -->
+  <BootSplashScreen>
+    <!-- Configures boot splash screen image -->
+    <Path>C:\Boot\Splash\BootLogo.bmp</Path>
+    <!-- Path to the bitmap image for the boot splash screen -->
+    <Duration>5</Duration>
+    <!-- Duration to display the splash screen in seconds -->
+  </BootSplashScreen>
+  <ShutdownAnimationEnabled>true</ShutdownAnimationEnabled>
+  <!-- Enables or disables shutdown animation:
+       true  = Show animation during shutdown
+       false = Disable animation -->
+  <EnableBootDiagnostics>false</EnableBootDiagnostics>
+  <!-- Enables boot diagnostics logging for troubleshooting:
+       true  = Enable diagnostic logging
+       false = Disable diagnostics -->
+  <PreBootAnimationEnabled>true</PreBootAnimationEnabled>
+  <!-- Controls whether preboot animations are shown:
+       true  = Show preboot animation
+       false = Do not show -->
 </component>

@@ -7,5 +7,27 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures Plug and Play settings for hardware preparation in audit mode -->
+  <!-- Configures Plug and Play (PnP) behavior during auditSystem phase -->
+  <PersistAllDeviceInstalls>true</PersistAllDeviceInstalls>
+  <!-- Retain all device installations to allow testing of hardware configurations -->
+  <DoNotCleanUpNonPresentDevices>true</DoNotCleanUpNonPresentDevices>
+  <!-- Keep drivers for non-present devices for audit/testing purposes -->
+  <RetainAllDeviceInstalls>true</RetainAllDeviceInstalls>
+  <!-- Ensure all PnP devices remain installed during auditSystem -->
+  <SysprepHardwareAbstractionLayer>false</SysprepHardwareAbstractionLayer>
+  <!-- HAL generalization is typically disabled in auditSystem to preserve system functionality for testing -->
+  <DriverPaths>
+    <!-- Optional: specify additional driver paths for audit/testing -->
+    <PathAndCredentials wcm:action="add">
+      <Path>C:\Drivers\Audit</Path>
+      <Credentials>
+        <Domain>CONTOSO</Domain>
+        <Username>AuditUser</Username>
+        <Password>
+          <Value>AuditPass123</Value>
+          <PlainText>true</PlainText>
+        </Password>
+      </Credentials>
+    </PathAndCredentials>
+  </DriverPaths>
 </component>

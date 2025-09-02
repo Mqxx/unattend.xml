@@ -7,5 +7,41 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures user-specific deployment settings in audit mode, such as running synchronous commands -->
+  <!-- Configures Windows deployment settings for Audit User (Audit Mode) -->
+  <Reseal>
+    <!-- In Audit Mode, reseal is typically set to Audit -->
+    <Mode>Audit</Mode>
+    <!-- Options:
+         OOBE  = Out-of-Box Experience
+         Audit = Boot into Audit Mode -->
+  </Reseal>
+  <RunSynchronous>
+    <!-- Commands that run synchronously during Audit Mode -->
+    <RunSynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <Description>Run audit preparation script</Description>
+      <Path>C:\Audit\PrepareAudit.ps1</Path>
+    </RunSynchronousCommand>
+    <RunSynchronousCommand wcm:action="add">
+      <Order>2</Order>
+      <Description>Install audit utilities</Description>
+      <Path>C:\Audit\InstallTools.cmd</Path>
+    </RunSynchronousCommand>
+  </RunSynchronous>
+  <RunAsynchronous>
+    <!-- Optional asynchronous commands during Audit Mode -->
+    <RunAsynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <Description>Background monitoring service</Description>
+      <Path>C:\Audit\BackgroundService.cmd</Path>
+    </RunAsynchronousCommand>
+  </RunAsynchronous>
+  <ExtendOSPartition>false</ExtendOSPartition>
+  <!-- Typically disabled in audit mode; OS partition is already configured -->
+  <Respecialize>false</Respecialize>
+  <!-- No respecialize needed in audit mode -->
+  <DoNotCleanUpNonPresentDevices>true</DoNotCleanUpNonPresentDevices>
+  <!-- Keep non-present drivers for audit testing -->
+  <Generalize>false</Generalize>
+  <!-- Generalize is not performed in audit mode -->
 </component>

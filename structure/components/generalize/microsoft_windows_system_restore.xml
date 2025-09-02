@@ -7,5 +7,36 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures System Restore settings during generalization, e.g., disabling restore points -->
+  <!-- Configures Windows System Restore settings -->
+  <SystemRestoreEnabled>true</SystemRestoreEnabled>
+  <!-- Enables or disables System Restore:
+       true  = System Restore is enabled
+       false = System Restore is disabled -->
+  <CreateRestorePointOnSetup>true</CreateRestorePointOnSetup>
+  <!-- Specifies whether a restore point is created after Windows setup:
+       true  = Create restore point
+       false = Do not create -->
+  <MaxRestorePoints>64</MaxRestorePoints>
+  <!-- Specifies the maximum number of restore points to keep -->
+  <DiskSpacePercent>15</DiskSpacePercent>
+  <!-- Specifies the maximum percentage of disk space used for restore points -->
+  <VolumeSettings>
+    <!-- Configures System Restore per volume -->
+    <Volume wcm:action="add">
+      <DriveLetter>C:</DriveLetter>
+      <SystemProtection>true</SystemProtection>
+      <!-- Enables System Restore on this volume -->
+      <MaxUsagePercent>15</MaxUsagePercent>
+      <!-- Maximum disk space for restore points on this volume -->
+    </Volume>
+    <Volume wcm:action="add">
+      <DriveLetter>D:</DriveLetter>
+      <SystemProtection>false</SystemProtection>
+      <!-- Disables System Restore on this volume -->
+    </Volume>
+  </VolumeSettings>
+  <RestorePointCreationOnSchedule>false</RestorePointCreationOnSchedule>
+  <!-- Determines whether restore points are created on a schedule:
+       true  = Create scheduled restore points
+       false = Do not create scheduled restore points -->
 </component>

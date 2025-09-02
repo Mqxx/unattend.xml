@@ -7,5 +7,47 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Adds drivers to an offline Windows image, e.g., for storage or network devices -->
+  <!-- Configures Plug and Play custom driver paths and settings for phases other than WinPE -->
+  <DriverPaths>
+    <!-- Specifies folders that contain device drivers to install -->
+    <PathAndCredentials wcm:action="add">
+      <Path>C:\Drivers\Network</Path>
+      <!-- Path to the folder containing driver files -->
+      <Credentials>
+        <!-- Optional credentials if the path is on a network share -->
+        <Domain>CONTOSO</Domain>
+        <!-- Domain for authentication -->
+        <Username>DriverUser</Username>
+        <!-- Username for authentication -->
+        <Password>
+          <Value>DriverPass123</Value>
+          <PlainText>true</PlainText>
+        </Password>
+        <!-- Password for authentication -->
+      </Credentials>
+    </PathAndCredentials>
+    <PathAndCredentials wcm:action="add">
+      <Path>D:\Drivers\Video</Path>
+      <!-- Another driver path without credentials -->
+    </PathAndCredentials>
+    <PathAndCredentials wcm:action="add">
+      <Path>\\Server\Share\AudioDrivers</Path>
+      <!-- Network driver path with credentials -->
+      <Credentials>
+        <Domain>CONTOSO</Domain>
+        <Username>AudioUser</Username>
+        <Password>
+          <Value>AudioPass456</Value>
+          <PlainText>true</PlainText>
+        </Password>
+      </Credentials>
+    </PathAndCredentials>
+  </DriverPaths>
+  <DriverSigningPolicy>Ignore</DriverSigningPolicy>
+  <!-- Determines how Windows handles unsigned drivers:
+       Ignore  = Install without prompting
+       Warn    = Show a warning
+       Block   = Do not install unsigned drivers -->
+  <DevicePath>%SystemDrive%\Drivers</DevicePath>
+  <!-- Additional device path where Windows searches for drivers -->
 </component>

@@ -1,11 +1,143 @@
-<component
-  name="Microsoft-Windows-Shell-Setup"
+<component name="Microsoft-Windows-Shell-Setup"
   processorArchitecture="amd64"
   publicKeyToken="31bf3856ad364e35"
   language="neutral"
   versionScope="nonSxS"
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
->
-  <!-- Automates OOBE settings such as user accounts, privacy settings, and dialog suppression -->
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- Configures Windows Shell and general OS settings -->
+
+  <ComputerName>MyComputer</ComputerName>
+  <!-- Sets the computer name -->
+
+  <RegisteredOwner>John Doe</RegisteredOwner>
+  <!-- Specifies the registered owner of the system -->
+
+  <RegisteredOrganization>Example Corp</RegisteredOrganization>
+  <!-- Specifies the registered organization -->
+
+  <ProductKey>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</ProductKey>
+  <!-- Specifies the Windows product key -->
+
+  <TimeZone>W. Europe Standard Time</TimeZone>
+  <!-- Sets the system time zone -->
+
+  <ShowWindowsLive>false</ShowWindowsLive>
+  <!-- Enables or disables the Windows Live sign-in prompt -->
+
+  <DoNotCleanTaskBar>true</DoNotCleanTaskBar>
+  <!-- Prevents Windows from cleaning up the taskbar after sysprep -->
+
+  <OEMInformation>
+    <!-- Configures OEM branding information -->
+    <Logo>C:\OEM\Logo.bmp</Logo>
+    <!-- Path to the OEM logo -->
+    <Manufacturer>Contoso</Manufacturer>
+    <!-- OEM manufacturer name -->
+    <Model>Model X100</Model>
+    <!-- OEM model -->
+    <SupportHours>24/7</SupportHours>
+    <!-- OEM support hours -->
+    <SupportPhone>+1-800-555-1234</SupportPhone>
+    <!-- OEM support phone number -->
+    <SupportURL>http://support.contoso.com</SupportURL>
+    <!-- OEM support URL -->
+  </OEMInformation>
+
+  <AutoLogon>
+    <!-- Configures automatic logon -->
+    <Password>
+      <Value>Pa$$w0rd</Value>
+      <PlainText>true</PlainText>
+    </Password>
+    <Username>Administrator</Username>
+    <!-- Username for auto logon -->
+    <Domain>CONTOSO</Domain>
+    <!-- Domain for auto logon -->
+    <Enabled>true</Enabled>
+    <!-- Enables auto logon -->
+    <LogonCount>1</LogonCount>
+    <!-- Number of automatic logons -->
+  </AutoLogon>
+
+  <UserAccounts>
+    <!-- Configures user accounts -->
+    <AdministratorPassword>
+      <Value>AdminPass123</Value>
+      <PlainText>true</PlainText>
+    </AdministratorPassword>
+    <!-- Sets the Administrator account password -->
+
+    <LocalAccounts>
+      <!-- Adds local user accounts -->
+      <LocalAccount wcm:action="add">
+        <Name>User1</Name>
+        <!-- Username -->
+        <Group>Administrators</Group>
+        <!-- User group -->
+        <DisplayName>John Smith</DisplayName>
+        <!-- Display name -->
+        <Description>Standard administrative user</Description>
+        <!-- User description -->
+        <Password>
+          <Value>UserPass123</Value>
+          <PlainText>true</PlainText>
+        </Password>
+        <!-- User password -->
+      </LocalAccount>
+    </LocalAccounts>
+  </UserAccounts>
+
+  <FirstLogonCommands>
+    <!-- Commands executed at first logon -->
+    <SynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <!-- Execution order -->
+      <CommandLine>cmd /c echo Hello World</CommandLine>
+      <!-- Command to execute -->
+      <Description>Display welcome message</Description>
+      <!-- Description of the command -->
+    </SynchronousCommand>
+    <SynchronousCommand wcm:action="add">
+      <Order>2</Order>
+      <CommandLine>powershell -File C:\Setup\Configure.ps1</CommandLine>
+      <Description>Run custom PowerShell script</Description>
+    </SynchronousCommand>
+  </FirstLogonCommands>
+
+  <LogonCommands>
+    <!-- Commands executed at logon -->
+    <AsynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <CommandLine>notepad.exe</CommandLine>
+      <Description>Launch Notepad</Description>
+    </AsynchronousCommand>
+  </LogonCommands>
+
+  <TaskbarLinks>
+    <!-- Adds pinned taskbar items -->
+    <Link0>%APPDATA%\Microsoft\Windows\Start Menu\Programs\Internet Explorer.lnk</Link0>
+    <!-- First pinned link -->
+    <Link1>C:\Tools\CustomApp.lnk</Link1>
+    <!-- Second pinned link -->
+  </TaskbarLinks>
+
+  <Themes>
+    <!-- Configures Windows theme -->
+    <CustomDefaultThemeFile>C:\Windows\Resources\Themes\Custom.theme</CustomDefaultThemeFile>
+    <!-- Path to the default custom theme -->
+  </Themes>
+
+  <StartTiles>
+    <!-- Configures pinned Start menu tiles -->
+    <Tile wcm:action="add">
+      <Path>C:\Program Files\App1\App1.exe</Path>
+      <!-- Path to application for Start tile -->
+    </Tile>
+    <Tile wcm:action="add">
+      <Path>C:\Program Files\App2\App2.exe</Path>
+    </Tile>
+  </StartTiles>
+
 </component>
+

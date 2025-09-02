@@ -7,5 +7,26 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures system settings such as computer name or display settings during generalization -->
+  <!-- Configures neutral Windows Shell settings for generalize phase -->
+  <ComputerName>*</ComputerName>
+  <!-- Sets the computer name to a placeholder (*) to be generated at specialization -->
+  <RegisteredOwner>DefaultOwner</RegisteredOwner>
+  <!-- Neutral registered owner used during generalize -->
+  <RegisteredOrganization>DefaultOrg</RegisteredOrganization>
+  <!-- Neutral organization used during generalize -->
+  <TimeZone>UTC</TimeZone>
+  <!-- Neutral timezone during generalize; can be overridden in specialize -->
+  <DoNotCleanTaskBar>true</DoNotCleanTaskBar>
+  <!-- Prevents Windows from cleaning up the taskbar after sysprep -->
+  <OEMInformation>
+    <!-- Optional OEM branding placeholders -->
+    <Logo>C:\OEM\Logo.bmp</Logo>
+    <Manufacturer>OEM</Manufacturer>
+    <Model>GenericModel</Model>
+    <SupportHours>24/7</SupportHours>
+    <SupportPhone>000-000-0000</SupportPhone>
+    <SupportURL>http://support.oem.com</SupportURL>
+  </OEMInformation>
+  <!-- No AutoLogon, FirstLogonCommands, UserAccounts, Themes, or StartTiles in generalize -->
+  <!-- All user-specific and OOBE settings are deferred to specialize or oobeSystem phases -->
 </component>

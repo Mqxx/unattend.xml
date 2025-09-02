@@ -7,5 +7,61 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures user-specific settings in audit mode, such as executing first logon commands -->
+  <!-- Configures Windows Shell settings for Audit User (Audit Mode) -->
+  <ComputerName>AuditPC</ComputerName>
+  <!-- Optional: temporary computer name used during Audit Mode -->
+  <RegisteredOwner>AuditUser</RegisteredOwner>
+  <RegisteredOrganization>AuditOrg</RegisteredOrganization>
+  <!-- Neutral owner/organization used for audit -->
+  <TimeZone>UTC</TimeZone>
+  <!-- Neutral timezone for audit -->
+  <DoNotCleanTaskBar>true</DoNotCleanTaskBar>
+  <!-- Prevents Windows from cleaning up taskbar icons during audit -->
+  <AutoLogon>
+    <!-- Enables automatic logon to Audit User account -->
+    <Enabled>true</Enabled>
+    <Username>Administrator</Username>
+    <Password>
+      <Value>AuditPass123</Value>
+      <PlainText>true</PlainText>
+    </Password>
+    <LogonCount>1</LogonCount>
+  </AutoLogon>
+  <FirstLogonCommands>
+    <!-- Commands executed automatically during Audit Mode -->
+    <SynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <CommandLine>powershell -ExecutionPolicy Bypass -File C:\Audit\SetupAudit.ps1</CommandLine>
+      <Description>Run audit configuration script</Description>
+    </SynchronousCommand>
+    <SynchronousCommand wcm:action="add">
+      <Order>2</Order>
+      <CommandLine>cmd /c echo Audit Mode initialized</CommandLine>
+      <Description>Audit message</Description>
+    </SynchronousCommand>
+  </FirstLogonCommands>
+  <UserAccounts>
+    <!-- Optional: create additional audit user accounts -->
+    <LocalAccounts>
+      <LocalAccount wcm:action="add">
+        <Name>AuditUser1</Name>
+        <Group>Administrators</Group>
+        <Password>
+          <Value>UserPass123</Value>
+          <PlainText>true</PlainText>
+        </Password>
+      </LocalAccount>
+    </LocalAccounts>
+  </UserAccounts>
+  <OEMInformation>
+    <!-- Optional OEM placeholders during audit -->
+    <Logo>C:\OEM\AuditLogo.bmp</Logo>
+    <Manufacturer>AuditCorp</Manufacturer>
+    <Model>AuditModel</Model>
+    <SupportHours>24/7</SupportHours>
+    <SupportPhone>000-000-0000</SupportPhone>
+    <SupportURL>http://support.audit.com</SupportURL>
+  </OEMInformation>
+  <DoNotCleanTaskBar>true</DoNotCleanTaskBar>
+  <!-- Ensures that taskbar and pinned items remain intact for audit testing -->
 </component>

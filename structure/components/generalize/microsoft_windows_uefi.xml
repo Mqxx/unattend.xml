@@ -7,5 +7,59 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures UEFI-specific settings during generalization, e.g., firmware-related options -->
+  <!-- Configures UEFI firmware settings and boot options -->
+  <SecureBoot>
+    <!-- Configures Secure Boot behavior -->
+    <Enable>true</Enable>
+    <!-- Enables or disables Secure Boot:
+         true  = Secure Boot enabled
+         false = Secure Boot disabled -->
+    <Mode>Standard</Mode>
+    <!-- Options: Standard, Custom
+         Standard = Use default Microsoft keys
+         Custom   = Use custom keys -->
+  </SecureBoot>
+  <BootOrder>
+    <!-- Specifies UEFI boot order -->
+    <Device wcm:action="add">PciRoot(0x0)/Pci(0x1,0x0)/USB(0x0)</Device>
+    <!-- Example: USB first -->
+    <Device wcm:action="add">PciRoot(0x0)/Pci(0x1,0x0)/HD(0,MBR,0x0)</Device>
+    <!-- Example: Internal HDD second -->
+  </BootOrder>
+  <FirmwareSettings>
+    <!-- Configures general UEFI firmware settings -->
+    <FastBootEnabled>true</FastBootEnabled>
+    <!-- Enables or disables Fast Boot:
+         true  = Fast Boot enabled
+         false = Fast Boot disabled -->
+    <VirtualizationSupport>true</VirtualizationSupport>
+    <!-- Enables or disables hardware virtualization (VT-x/AMD-V):
+         true  = Enabled
+         false = Disabled -->
+    <TrustedPlatformModuleEnabled>true</TrustedPlatformModuleEnabled>
+    <!-- Enables or disables TPM:
+         true  = TPM enabled
+         false = TPM disabled -->
+  </FirmwareSettings>
+  <PlatformKey>
+    <!-- Optional: Configures Platform Key (PK) for Secure Boot -->
+    <Install>true</Install>
+    <Path>C:\UEFI\Keys\PK.cer</Path>
+    <!-- Path to the PK certificate -->
+  </PlatformKey>
+  <KeyExchangeKeys>
+    <!-- Optional: Configures Key Exchange Keys (KEK) -->
+    <KEK wcm:action="add">
+      <Path>C:\UEFI\Keys\KEK.cer</Path>
+    </KEK>
+  </KeyExchangeKeys>
+  <SignatureDatabase>
+    <!-- Optional: Configures authorized signatures for Secure Boot -->
+    <DB wcm:action="add">
+      <Path>C:\UEFI\Keys\DB.cer</Path>
+    </DB>
+    <DBX wcm:action="add">
+      <Path>C:\UEFI\Keys\DBX.cer</Path>
+    </DBX>
+  </SignatureDatabase>
 </component>

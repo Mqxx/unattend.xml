@@ -7,5 +7,35 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures font support for specific languages in an offline Windows image -->
+  <!-- Configures font installation during Windows setup -->
+  <Install>
+    <!-- Specifies fonts to install -->
+    <Font wcm:action="add">
+      <Name>Arial</Name>
+      <!-- Name of the font -->
+      <Path>C:\Fonts\Arial.ttf</Path>
+      <!-- Path to the font file -->
+      <Source>C:\Sources\Fonts</Source>
+      <!-- Optional source folder for the font -->
+    </Font>
+    <Font wcm:action="add">
+      <Name>Calibri</Name>
+      <Path>C:\Fonts\Calibri.ttf</Path>
+    </Font>
+    <Font wcm:action="add">
+      <Name>Times New Roman</Name>
+      <Path>C:\Fonts\TimesNewRoman.ttf</Path>
+    </Font>
+  </Install>
+  <Remove>
+    <!-- Specifies fonts to remove -->
+    <Font wcm:action="add">
+      <Name>OldFont</Name>
+      <!-- Name of the font to remove -->
+    </Font>
+  </Remove>
+  <AcceptEULA>true</AcceptEULA>
+  <!-- Indicates acceptance of any font license terms:
+       true  = License accepted
+       false = Installation may be blocked -->
 </component>

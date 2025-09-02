@@ -7,5 +7,25 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Removes hardware-specific driver information during Sysprep generalization -->
+  <!-- Configures Plug and Play (PnP) behavior during generalize phase -->
+  <PersistAllDeviceInstalls>false</PersistAllDeviceInstalls>
+  <!-- Remove all device installations to generalize image:
+       true  = Keep installed devices
+       false = Remove installed devices (recommended for generalize) -->
+  <DoNotCleanUpNonPresentDevices>false</DoNotCleanUpNonPresentDevices>
+  <!-- Remove drivers for devices not present:
+       true  = Keep non-present drivers
+       false = Clean up non-present drivers (default for generalize) -->
+  <RetainAllDeviceInstalls>false</RetainAllDeviceInstalls>
+  <!-- Ensures no PnP devices are retained in the generalized image:
+       true  = Keep all device installations
+       false = Remove (recommended) -->
+  <!-- Optional: DriverPaths can be left empty during generalize to avoid including hardware-specific drivers -->
+  <DriverPaths>
+    <!-- No additional driver paths needed in generalize -->
+  </DriverPaths>
+  <SysprepHardwareAbstractionLayer>true</SysprepHardwareAbstractionLayer>
+  <!-- Generalize HAL to make the image hardware-neutral:
+       true  = Generalize HAL
+       false = Keep HAL specific to current hardware -->
 </component>

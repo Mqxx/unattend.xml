@@ -7,5 +7,46 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures system settings in audit mode, such as display or desktop configurations -->
+  <!-- Configures Windows Shell settings for Audit System mode -->
+  <ComputerName>AuditSystemPC</ComputerName>
+  <!-- Optional temporary computer name for auditSystem -->
+  <RegisteredOwner>AuditAdmin</RegisteredOwner>
+  <RegisteredOrganization>AuditCorp</RegisteredOrganization>
+  <!-- Neutral owner/organization for auditSystem -->
+  <TimeZone>UTC</TimeZone>
+  <!-- Neutral timezone for auditSystem -->
+  <DoNotCleanTaskBar>true</DoNotCleanTaskBar>
+  <!-- Prevents Windows from cleaning up taskbar icons -->
+  <AutoLogon>
+    <!-- Automatic logon for system audit mode -->
+    <Enabled>true</Enabled>
+    <Username>Administrator</Username>
+    <Password>
+      <Value>AdminPass123</Value>
+      <PlainText>true</PlainText>
+    </Password>
+    <LogonCount>1</LogonCount>
+  </AutoLogon>
+  <FirstLogonCommands>
+    <!-- Commands executed automatically during auditSystem -->
+    <SynchronousCommand wcm:action="add">
+      <Order>1</Order>
+      <CommandLine>powershell -ExecutionPolicy Bypass -File C:\Audit\ConfigureAuditSystem.ps1</CommandLine>
+      <Description>Run system audit configuration script</Description>
+    </SynchronousCommand>
+    <SynchronousCommand wcm:action="add">
+      <Order>2</Order>
+      <CommandLine>cmd /c echo Audit System Mode Initialized</CommandLine>
+      <Description>Audit message</Description>
+    </SynchronousCommand>
+  </FirstLogonCommands>
+  <OEMInformation>
+    <!-- Optional OEM placeholders during auditSystem -->
+    <Logo>C:\OEM\AuditLogo.bmp</Logo>
+    <Manufacturer>AuditCorp</Manufacturer>
+    <Model>AuditModel</Model>
+    <SupportHours>24/7</SupportHours>
+    <SupportPhone>000-000-0000</SupportPhone>
+    <SupportURL>http://support.audit.com</SupportURL>
+  </OEMInformation>
 </component>

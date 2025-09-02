@@ -7,5 +7,56 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Defines regional settings such as language and locale for the OOBE phase -->
+  <!-- Configures international and language settings -->
+  <InputLocale>0407:00000407</InputLocale>
+  <!-- Specifies the default input locale (keyboard layout):
+       Example: 0407:00000407 = German (Germany) keyboard -->
+  <SystemLocale>de-DE</SystemLocale>
+  <!-- Specifies the language used for non-Unicode programs:
+       Example: de-DE = German (Germany) -->
+  <UILanguage>de-DE</UILanguage>
+  <!-- Specifies the default user interface language -->
+  <UILanguageFallback>en-US</UILanguageFallback>
+  <!-- Specifies a fallback UI language if the default is unavailable -->
+  <UserLocale>de-DE</UserLocale>
+  <!-- Specifies the default format settings (date, time, currency, etc.) -->
+  <InputProfiles>
+    <!-- Configures additional input methods and layouts -->
+    <InputProfile wcm:action="add">
+      <ID>0409:00000409</ID>
+      <!-- English (United States) keyboard -->
+      <Default>true</Default>
+      <!-- Marks this profile as the default if desired -->
+    </InputProfile>
+    <InputProfile wcm:action="add">
+      <ID>0407:00000407</ID>
+      <!-- German (Germany) keyboard -->
+      <Default>false</Default>
+    </InputProfile>
+  </InputProfiles>
+  <FallbackUILanguage>en-US</FallbackUILanguage>
+  <!-- Provides an additional fallback UI language -->
+  <GeoID>94</GeoID>
+  <!-- Specifies the geographical location:
+       Example: 94 = Germany (Windows GeoID code) -->
+  <LocationName>Germany</LocationName>
+  <!-- Friendly name for the location -->
+  <UserList>
+    <!-- Specifies languages available to users -->
+    <User wcm:action="add">
+      <Locale>de-DE</Locale>
+      <!-- German available -->
+    </User>
+    <User wcm:action="add">
+      <Locale>en-US</Locale>
+      <!-- English available -->
+    </User>
+  </UserList>
+  <Display>
+    <!-- Optional display language configuration -->
+    <Language>de-DE</Language>
+    <!-- Display language for new user profiles -->
+    <FallbackLanguage>en-US</FallbackLanguage>
+    <!-- Fallback language if the display language is not available -->
+  </Display>
 </component>

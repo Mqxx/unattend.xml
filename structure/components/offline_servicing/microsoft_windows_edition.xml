@@ -7,5 +7,25 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures settings related to the Windows edition in an offline image, e.g., for upgrading or downgrading editions -->
+  <!-- Configures the Windows edition and license information during setup -->
+  <WindowsEdition>Professional</WindowsEdition>
+  <!-- Specifies the target Windows edition to install:
+       Examples: Home, Professional, Enterprise, Education -->
+  <ProductKey>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</ProductKey>
+  <!-- Specifies the product key for the selected edition -->
+  <LicenseAccepted>true</LicenseAccepted>
+  <!-- Indicates acceptance of the Windows license agreement:
+       true  = License accepted
+       false = Setup may be blocked -->
+  <AutoUpgrade>false</AutoUpgrade>
+  <!-- Determines whether to automatically upgrade to a higher edition if available:
+       true  = Enable auto-upgrade
+       false = Do not auto-upgrade -->
+  <EditionUpgrade>
+    <!-- Optional: Configures edition upgrade settings -->
+    <TargetEdition>Enterprise</TargetEdition>
+    <!-- Target edition for in-place upgrade -->
+    <UpgradeProductKey>YYYYY-YYYYY-YYYYY-YYYYY-YYYYY</UpgradeProductKey>
+    <!-- Product key for upgrade -->
+  </EditionUpgrade>
 </component>

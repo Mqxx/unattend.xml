@@ -7,5 +7,33 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Configures code integrity settings, such as driver signing policies, in an offline Windows image -->
+  <!-- Configures Windows Code Integrity (CI) settings to enforce driver and system file validation -->
+  <EnableCodeIntegrity>true</EnableCodeIntegrity>
+  <!-- Enables or disables Code Integrity enforcement:
+       true  = Enforce signature validation
+       false = Disable enforcement (not recommended) -->
+  <PolicyPath>C:\Windows\System32\CodeIntegrity\Policy\DefaultPolicy.xml</PolicyPath>
+  <!-- Specifies the path to the Code Integrity policy XML file -->
+  <AllowUserModePolicyChanges>false</AllowUserModePolicyChanges>
+  <!-- Determines if user-mode applications can modify CI policies:
+       true  = Users can change CI policies
+       false = Only administrators can change CI policies -->
+  <EnforceMicrosoftSigned>true</EnforceMicrosoftSigned>
+  <!-- Ensures that only Microsoft-signed binaries are allowed:
+       true  = Enforce
+       false = Allow non-Microsoft signed binaries if other rules permit -->
+  <EnableTestSigning>false</EnableTestSigning>
+  <!-- Enables test signing mode (allows test-signed drivers):
+       true  = Test-signed drivers allowed
+       false = Test signing disabled -->
+  <ProtectedPaths>
+    <!-- Specifies folders or files to enforce CI policies on -->
+    <Path wcm:action="add">C:\Windows\System32</Path>
+    <Path wcm:action="add">C:\Program Files</Path>
+    <Path wcm:action="add">C:\Windows\SysWOW64</Path>
+  </ProtectedPaths>
+  <AuditMode>false</AuditMode>
+  <!-- Enables auditing mode without enforcing restrictions:
+       true  = CI violations are logged but not blocked
+       false = CI violations are blocked according to policy -->
 </component>

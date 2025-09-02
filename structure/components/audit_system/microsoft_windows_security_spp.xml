@@ -7,5 +7,27 @@
   xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 >
-  <!-- Manages software protection platform settings, such as licensing, in audit mode -->
+  <!-- Configures Windows Software Protection Platform (SPP) for Audit System mode -->
+  <SkipRearm>true</SkipRearm>
+  <!-- Typically skip decrementing rearm count during auditSystem to preserve activation state -->
+  <NoGenTicket>true</NoGenTicket>
+  <!-- Do not generate activation tickets during auditSystem -->
+  <SkipLicenseActivation>true</SkipLicenseActivation>
+  <!-- Skip license activation during auditSystem -->
+  <ProductKey>
+    <!-- Optional: leave empty or use a placeholder key -->
+    <Key></Key>
+  </ProductKey>
+  <Activation>
+    <Enable>false</Enable>
+    <!-- Do not attempt activation in auditSystem -->
+    <AutoActivate>false</AutoActivate>
+    <AutoNotify>false</AutoNotify>
+  </Activation>
+  <GracePeriod>
+    <Days>0</Days>
+    <!-- No grace period processing during auditSystem -->
+  </GracePeriod>
+  <UseDefaultPID>true</UseDefaultPID>
+  <!-- Use default Product ID from the image; custom PID not applied -->
 </component>
